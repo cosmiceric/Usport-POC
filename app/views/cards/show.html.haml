@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  
+  =image_tag @card.image.url(:card)
+%p
+  %b First name:
+  = @card.first_name
+%p
+  %b Last name:
+  = @card.last_name
+%p
+  %b Team:
+  = @card.team.name
+%p
+  %b Sport:
+  = @card.team.sport.name
+%p
+  %b Date of birth:
+  = @card.date_of_birth
+%p
+  %b Height:
+  = @card.height
+%p
+  %b Weight:
+  = @card.weight
+%p
+  %b Jersey number:
+  = @card.jersey_number
+%p
+  %b Throws:
+  = @card.throws
+%p
+  %b Bats:
+  = @card.bats
+
+= link_to 'Edit', edit_card_path(@card)
+\|
+= link_to 'Back', cards_path

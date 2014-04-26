@@ -1,0 +1,276 @@
+/ %link(rel='stylesheet' href='../../css/feed.css')
+
+.feed
+	%a{:name=> 'feed'}
+	.posts
+		.post-area
+			=form_tag '/home/feed_entry', :remote => true do
+				=hidden_field_tag "card_id", @card.id
+				/ This is the person who's logged in profile pic
+				=image_tag @card.image.url(:small), :class=>"posted-by"
+				/ This is where the post text goes
+				/ %input(type="text" name="content" placeholder="Add to the conversation...")
+				=text_field_tag "content", '', :placeholder => "Add to the conversation..."
+				/ This is where images will be attached to posts leave commented out for now... working on css fixes
+				/ %input(type="file")
+				%input(type="submit" value="Post")
+		.feed-filter
+			/ %a(class="active" href="#") All
+			/ %a(href="#") Photos
+			/ %a(href="#") Videos
+			/ %a(href="#") Events
+			/ %a(href="#") Stats
+
+			/ TODO: Ajaxify reload of feed. maybe.  turbolinks rock too.
+			=link_to "All", "?s=#feed", :class=> params[:s].blank? ? 'active' : ''
+			-FEED_ENTRY_TYPES.each do |fe|
+				=link_to fe.titleize, "?s=" + fe + "#feed", :class=> params[:s] == fe ? 'active' : ''
+		#posts
+			-@feed_entries.each do |feed_entry|
+				= render :partial => 'feed_entry', :locals => {:feed_entry => feed_entry}
+
+			/ %hr
+			/ .post
+			/ 	/ The post owner's profile pic
+			/ 	%img(class="posted-by" src="http://flickholdr.com/100/100")
+			/ 	.content
+			/ 		.post-owner
+			/ 			/ The post owner's name
+			/ 			%a(href="person") David Roney
+			/ 			/ The post text
+			/ 			%p
+			/ 				Last nights game was awesome!
+
+
+
+			/ 		.album
+			/ 			/ All the images associated with the post
+			/ 			%img(src="/images/album/album-1.png")
+			/ 			%img(src="/images/album/album-2.png")
+			/ 			%img(src="/images/album/album-3.png")
+			/ 		/ Each feedback div is for a comment on the post
+			/ 		.feedback
+			/ 			/ Feedback owner's profile pic
+			/ 			%img(class="posted-by"src="http://flickholdr.com/100/100")
+			/ 			/ Feedback owner's name
+			/ 			%a(href="person") John Connor
+			/ 			/ Feedback content
+			/ 			%p
+			/ 				Great job!
+			/ 			.posted-at
+			/ 				%p
+			/ 					14 min
+			/ 		.feedback
+			/ 			/ Feedback owner's profile pic
+			/ 			%img(class="posted-by"src="http://flickholdr.com/100/100")
+			/ 			/ Feedback owner's name
+			/ 			%a(href="person") Sarah Para
+			/ 			/ Feedback content
+			/ 			%p
+			/ 				You guys were on fire!
+			/ 			.posted-at
+			/ 				%p
+			/ 					27 min
+			/ 		/ Area to add feedback to a post
+			/ 		.feedback
+			/ 			/ Feedback content
+			/ 			%input(type="text" placeholder="Comment here...")
+			/ 			/ High Five the player
+			/ 			%a(class="high-five" href="#") &#xe001
+			/ 			/ Share the post
+			/ 			%a(class="share" href="#") &#xe000
+			/ 		.posted-at
+			/ 			%p
+			/ 				45 min
+			/ 	.total-feedback
+			/ 		%p
+			/ 			/ Counts for comments and High Fives on the post
+			/ 			%a(href="#") 12 More Comments
+			/ 			<span class="seperator">|</span> 21 High Fives
+			/ .post
+			/ 	/ The post owner's profile pic
+			/ 	%img(class="posted-by" src="http://flickholdr.com/100/100")
+			/ 	.content
+			/ 		.post-owner
+			/ 			/ The post owner's name
+			/ 			%a(href="person") Michael Jahns
+			/ 			/ The post text
+			/ 			%p
+			/ 				Thanks Rawlings!
+
+
+			/ 		.ad
+			/ 			.ad-image
+			/ 				%img(src="/images/glove.png")
+			/ 			.ad-data
+			/ 				%h1 Heart of the Hide Pro Winner!
+			/ 				%p
+			/ 					his Heart of the Hide Pro Mesh Catcher's Mitt from Rawlings Gear features the One Piece Closed Web, which creates maximum strength and durability.
+			/ 		/ Area to add feedback to a post
+			/ 		.feedback
+			/ 			/ Feedback content
+			/ 			%input(type="text" placeholder="Comment here...")
+			/ 			/ High Five the player
+			/ 			%a(class="high-five" href="#") &#xe001
+			/ 			/ Share the post
+			/ 			%a(class="share" href="#") &#xe000
+			/ 		.posted-at
+			/ 			%p
+			/ 				45 min
+			/ 	.total-feedback
+			/ 		%p
+			/ 			/ Counts for comments and High Fives on the post
+			/ 			No comments yet
+			/ .post
+			/ 	/ The post owner's profile pic
+			/ 	%img(class="posted-by" src="http://flickholdr.com/100/100")
+			/ 	.content
+			/ 		.post-owner
+			/ 			/ The post owner's name
+			/ 			%a(href="person") Marty Owens
+			/ 			/ The post text
+			/ 			%p
+			/ 				Come out to our next game!
+
+
+			/ 		.event
+			/ 			.event-image
+			/ 				&#xe005
+			/ 			.event-data
+			/ 				%h1 Santa Cruz at Watsonville
+			/ 				%span.location Santa Cruz Arena
+			/ 				%span.day October 12 2013
+			/ 				%span.time 8pm
+
+
+			/ 		/ Area to add feedback to a post
+			/ 		.feedback
+			/ 			/ Feedback content
+			/ 			%input(type="text" placeholder="Comment here...")
+			/ 			/ High Five the player
+			/ 			%a(class="high-five" href="#") &#xe001
+			/ 			/ Share the post
+			/ 			%a(class="share" href="#") &#xe000
+			/ 		.posted-at
+			/ 			%p
+			/ 				45 min
+			/ 	.total-feedback
+			/ 		%p
+			/ 			/ Counts for comments and High Fives on the post
+			/ 			No comments yet
+			/ .post.sponsored
+			/ 	/ The post owner's profile pic
+			/ 	%img(class="posted-by" src="/images/nike-profile-pic.png")
+			/ 	.content
+			/ 		.post-owner
+			/ 			/ The post owner's name
+			/ 			%a(href="person") Nike Footwear
+			/ 			/ The post text
+			/ 			%p
+			/ 				2013 Nike Free 5.0
+
+
+			/ 		.ad
+			/ 			.ad-image
+			/ 				%img(src="/images/nike-free-ad.png")
+			/ 			.ad-data
+			/ 				%h1 Step up your game, with the New 2013 Free Line
+			/ 				%p
+			/ 					Nike Free shoes are specifically designed to let your feet move more naturally and freely than traditional athletic shoes. Over time, this helps make your feet stronger.
+			/ 		/ Area to add feedback to a post
+			/ 		.posted-at
+			/ 			%p
+			/ 				45 min
+			/ .post
+			/ 	/ The post owner's profile pic
+			/ 	%img(class="posted-by" src="http://flickholdr.com/100/100")
+			/ 	.content
+			/ 		.post-owner
+			/ 			/ The post owner's name
+			/ 			%a(href="person") Kent Emanuel
+			/ 			/ The post text
+			/ 			%p
+			/ 				I hit 2 homeruns this weekend.
+
+
+			/ 		.graph
+			/ 			.graph-image
+			/ 				&#xe006
+			/ 			.graph-data
+			/ 				%h1 New Homerun Record
+			/ 		/ Area to add feedback to a post
+			/ 		.feedback
+			/ 			/ Feedback content
+			/ 			%input(type="text" placeholder="Comment here...")
+			/ 			/ High Five the player
+			/ 			%a(class="high-five" href="#") &#xe001
+			/ 			/ Share the post
+			/ 			%a(class="share" href="#") &#xe000
+			/ 		.posted-at
+			/ 			%p
+			/ 				45 min
+			/ 	.total-feedback
+			/ 		%p
+			/ 			/ Counts for comments and High Fives on the post
+			/ 			No comments yet
+			/ .post
+			/ 	/ The post owner's profile pic
+			/ 	%img(class="posted-by" src="http://flickholdr.com/100/100")
+			/ 	.content
+			/ 		.post-owner
+			/ 			/ The post owner's name
+			/ 			%a(href="person") Michael Jahns
+			/ 			/ The post text
+			/ 			%p
+			/ 				I can't believe I was named a Super Slugger!
+
+
+			/ 		.achievement
+			/ 			.achievement-image
+			/ 				&#xe007
+			/ 			.achievement-data
+			/ 				%h1 Earned Super Slugger
+			/ 		/ Area to add feedback to a post
+			/ 		.feedback
+			/ 			/ Feedback content
+			/ 			%input(type="text" placeholder="Comment here...")
+			/ 			/ High Five the player
+			/ 			%a(class="high-five" href="#") &#xe001
+			/ 			/ Share the post
+			/ 			%a(class="share" href="#") &#xe000
+			/ 		.posted-at
+			/ 			%p
+			/ 				45 min
+			/ 	.total-feedback
+			/ 		%p
+			/ 			/ Counts for comments and High Fives on the post
+			/ 			No comments yet
+
+	.sidebar
+		.spectators
+			%h1 Spectators
+			.spectator
+				%img(src="http://flickholdr.com/100/100")
+				%h1 Hasee Gahtem
+				%h2 UF
+			.spectator
+				%img(src="http://flickholdr.com/100/100")
+				%h1 Lotta Raptors
+				%h2 UCF
+			.spectator
+				%img(src="http://flickholdr.com/100/100")
+				%h1 Manny Tacos
+				%h2 LSU
+
+		.ads
+			%h1 Sponsors
+			.ad
+				%img(src="/images/bat.png")
+				%h1 THE HARDEST BAT. EVER.
+				%p
+					We proudly introduce the MLB Prime series, the hardest wood bats ever produced by Louisville Slugger.
+			.ad
+				%img(src="/images/helmet.png")
+				%h1 All-Star Batting Helmet
+				%p
+					Moisture wicking UltraCool fabric keeps players dry and sweat out of eyes.

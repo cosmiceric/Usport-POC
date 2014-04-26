@@ -1,0 +1,58 @@
+header
+	background: $off-black
+	border-bottom: 1px solid rgba(0,0,0,.45)
+	box-shadow: 0 1px 0 rgba(255,255,255,.3)
+	font-size: 1.5em
+	padding: 1.25em .5em
+
+	nav
+		background: red
+		margin: auto
+		max-width: $max-width
+		text-align: center
+
+	a
+		color: $white
+		text-decoration: none
+
+	.links
+		a
+			border: 2px solid transparent
+			margin: 0 .5em
+			padding: .55em 1.4em .45em 1.4em
+
+		a:hover, .current
+			border: 2px solid $l-grey
+			border-radius: 2em
+
+	li
+		display: inline-block
+
+	input
+		background: url(/images/search.png) no-repeat rgba(0, 0, 0, 0)
+		background-position: 92% center
+		background-size: 10%
+		border: 2px solid $white
+		border-radius: 2em
+		color: $white
+		padding: .75em 1em .6em 1.35em
+		margin: 0
+		font-size: .8em
+		font-family: $gotham
+		&:focus
+			border: 2px solid $l-grey
+			outline: none
+
+	+search-placeholder-color($white)
+
+.title, .links, .search, .close
+	background: lightblue
+	display: inline-block
+	// padding: 0 20px
+	vertical-align: middle
+
+.title
+	font-family: $tungsten
+	font-size: 2.5em
+	font-weight: 600
+	letter-spacing: 1px

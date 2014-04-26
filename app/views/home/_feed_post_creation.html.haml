@@ -1,0 +1,21 @@
+.post-area
+
+	=form_tag '/home/feed_entry', :remote => true do
+		
+		=hidden_field_tag "card_id", @user_card.id
+		=image_tag @user_card.image.url(:small), :class=>"posted-by"
+		=text_field_tag "content", '', :placeholder => "Add to the conversation..."
+
+		%input(type="submit" value="Post")
+
+.feed-filter
+	/ %a(class="active" href="#") All
+	/ %a(href="#") Photos
+	/ %a(href="#") Videos
+	/ %a(href="#") Events
+	/ %a(href="#") Stats
+
+	/ TODO: Ajaxify reload of feed. maybe.  turbolinks rock too.
+	=link_to "All", "?s=#feed", :class=> params[:s].blank? ? 'active' : ''
+	-FEED_ENTRY_TYPES.each do |fe|
+		=link_to fe.titleize, "?s=" + fe, :class=> params[:s] == fe ? 'active' : ''

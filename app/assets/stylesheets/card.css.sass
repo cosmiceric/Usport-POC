@@ -1,0 +1,182 @@
+#cards
+	clear: both
+	overflow-x: hidden
+	overflow-y: auto
+
+.cards
+	clear: both
+	position: relative
+
+.cards .overlay
+	position: absolute
+	width: 10%
+	height: 100%
+	z-index: 1
+	background-color: dimgray
+	background-color: $off-black
+
+.cards .overlay-left
+	left: 0
+
+	background: -moz-linear-gradient(left, $off-black 0%, rgba(0,0,0,0) 100%) /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,$off-black), color-stop(100%,rgba(0,0,0,0))) /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, $off-black 0%,rgba(0,0,0,0) 100%) /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, $off-black 0%,rgba(0,0,0,0) 100%) /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, $off-black 0%,rgba(0,0,0,0) 100%) /* IE10+ */
+	background: linear-gradient(to right, $off-black 0%,rgba(0,0,0,0) 100%) /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 ) /* IE6-9 */
+
+.cards .overlay-right
+	right: 0
+
+	background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, $off-black 100%) /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,$off-black)) /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,$off-black 100%) /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,$off-black 100%) /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,$off-black 100%) /* IE10+ */
+	background: linear-gradient(to right, rgba(0,0,0,0) 0%,$off-black 100%) /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ) /* IE6-9 */
+
+.ui-coverflow-wrapper
+	position: relative
+	overflow: hidden
+
+.ui-coverflow
+	-webkit-perspective: 1000px
+	-moz-perspective: 1000px
+	-ms-perspective: 1000px
+	-o-perspective: 1000px
+	perspective: 1000px
+	// position: absolute
+	position: relative
+
+.ui-coverflow-item
+	position: relative
+	cursor: pointer
+	float: left
+
+.ui-state-active!
+
+.ui-coverflow-item
+	&:hover
+		cursor: move
+	&:focus
+		outline: 0
+
+.ui-coverflow img
+	-webkit-user-drag: none
+	-moz-user-drag: none
+	-ms-user-drag: none
+	-o-user-drag: none
+	user-drag: none
+	border: 0 none
+
+.card.flipped
+	-webkit-transform: rotatey(-180deg)
+	position: relative
+	z-index: 1
+
+.card
+	-webkit-transform-style: preserve-3d
+	//-webkit-transition: 0.5s
+	float: left
+	margin: 1.5em
+	margin-top: 0
+	-webkit-user-select: none  /* Chrome all / Safari all */
+	-moz-user-select: none     /* Firefox all */
+	-ms-user-select: none      /* IE 10+ */
+	// original card ratio, of width divided by height: 1.390625
+	// in other words: 445:320, or 89:64
+
+	width: 212px
+	height: 295px
+
+	h1
+		font-size: 1.75em
+		margin: 0
+		padding: 0
+		font-family: $tungsten
+		font-weight: bold
+		line-height: 1em
+		margin-bottom: .25em
+
+	h2
+		font-size: .75em
+		letter-spacing: 1px
+		margin: 0
+		text-transform: uppercase
+
+	.info
+		border-bottom-left-radius: 7px
+		border-bottom-right-radius: 7px
+		text-align: left
+		bottom: 0
+		left: 0
+		color: rgb(250,250,250)
+		position: absolute
+		width: 100%
+		padding: .75em 1em
+	.bg
+		background-color: $card-info
+		opacity: .75
+		position: absolute
+		width: 100%
+		height: 100%
+		left: 0
+		top: 0
+		z-index: -1
+
+	.badge
+		background-color: $d-red
+		border-radius: 50%
+		color: #fafafa
+
+		font-size: 1.5em
+		font-weight: bold
+
+		display: table-cell
+		height: 34px
+		width: 34px
+
+		position: relative
+		left: 185px
+		top: 13.25px
+
+		text-align: center
+		vertical-align: middle
+
+	.face
+		//background-color: $cardinals
+		//background-image: url(/images/player-card.png)
+		background-repeat: no-repeat
+		background-position: top center
+		background-size: cover
+
+		//position: relative
+		-webkit-backface-visibility: hidden
+		z-index: 2
+
+		width: 100%
+		height: 100%
+
+	.front
+		border-radius: 10px
+		border: #fafafa 4px solid
+		cursor: pointer
+		float: left
+		// margin: 1.5em
+		z-index: 1
+		position: relative
+
+	.back
+		position: absolute
+		top: 0
+		-webkit-transform: rotatey(-180deg)
+		height: auto
+		width: 800px//(320px*2.5)
+		z-index: 1
+		left: 0
+
+		display: inline-block
+		z-index: 10
+		background-color: $d-grey

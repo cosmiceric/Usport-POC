@@ -1,0 +1,459 @@
+!!!
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %title USport
+    %meta{:content => "", :name => "description"}/
+    %meta{ :name => "viewport", :content => "width=1024, user-scalable=no, minimum-scale=0.75, maximum-scale=3.0" }
+    %link{:href => "//cloud.typography.com/7560632/754002/css/fonts.css", :rel => "stylesheet"}/
+    %link{:href => "/css/main.css", :rel => "stylesheet"}/
+    %link{:href => "/css/animate.css", :rel => "stylesheet"}/
+    %script{:src => "/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"}
+    / typekit
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
+    :javascript
+      window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.1.min.js"><\/script>')
+    %script{:src => "/js/main.js"}
+    %script{:src => "/js/jquery.flexslider-min.js"}
+    / Flexslider
+    %script{:src => "//use.typekit.net/jrx7wqy.js", :type => "text/javascript"}
+    :javascript
+      try{Typekit.load();}catch(e){}  
+    %body
+    .page-bg.section
+      .slide
+      #video-viewport
+        %video#video-bg(muted="" autoplay="" preload="" loop="" width="1280" height="720")
+          %source(src = "/videos/baseball.mp4" type="video/mp4")
+          
+          -# %video#video-bg{:autoplay => "", :loop => "", :muted => "", :preload => ""}
+
+      / slide
+    / /page-bg
+    .header.section
+      .wrapper
+        %a.brand{:href => "/"}
+          U<span>Sport</span>
+    / Main hero unit for a primary marketing message or call to action
+    .hero.section
+      .wrapper
+        .content.for-step-sign-up.active.loadIn
+          .pitch
+            %ul.slides
+              %li
+                %h1 Your Life, Your Sports.
+                %h4 All of your athletic acheivements in one place
+              %li
+                %h1 Connect
+                %h4 Connect with your team, fans, recruiters, and sponsors
+              %li
+                %h1 Compete
+                %h4 Know your competition before the big game
+              %li
+                %h1 Organize
+                %h4 Organize your team, your school, your club, your sports
+
+        .content.for-step-create-account.sub
+          %h1 Design the Front
+        .content.for-step-add-stats.sub
+          %h1 Fill Out Your Stats
+        .content.for-step-share-card.sub
+          %h1 Share Your Player Card
+    / /hero-unit
+    .primary.section
+      .wrapper
+        .intro
+          #step-sign-up.step
+            .player-card.hover.card-baseball.loadIn{"data-face" => "front"}
+              .face.face-front
+                .content
+              .face.face-back
+                .content
+            .content
+              .inner
+                .for-part-intro-email
+                  %a{:href => "#part-intro"} &larr; Back
+                .for-part-intro
+                %h2#signup-copy.loadIn
+                  Build your free
+                  = succeed "Player" do
+                    %br/
+                  Card today.
+                #part-intro.part.active.loadIn
+                  -# =link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => 'btn btn-facebook' 
+                  =link_to "Sign in with Facebook", '#step-create-account', :class => 'btn btn-facebook' 
+                  %p
+                    %a{:href => "#part-intro-email"}
+                      Or use your email address
+                #part-intro-email.part
+                  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+                    %div
+                      %label{:for => "first-name"}
+                      = f.email_field :email, :autofocus => true, :placeholder => "Email address"
+                    %div
+                      %label{:for => "password"}
+                      = f.password_field :password, :placeholder => "Password"
+                      / - if devise_mapping.rememberable?
+                      /   %div
+                      /     = f.check_box :remember_me
+                      /     = f.label :remember_me
+                    / %div= f.submit "Sign In", :class=> 'btn'
+                    %div=link_to "Sign In", '/home/hacked_sign_in', :class=>'btn'
+                    %p
+                      = link_to "or, create a new account", '#step-create-account'
+                  / = render "users/shared/links"
+
+                  / %div
+                  /   %label{:for => "first-name"}
+                  /   %input#first-name{"data-required" => "true", "data-type" => "first-name", :name => "first", :placeholder => "Email address", :type => "text", :value => ""}/
+                  / %div
+                  /   %label{:for => "password"}
+                  /   %input#password{"data-required" => "true", "data-type" => "last-name", :name => "password", :placeholder => "Password", :type => "password", :value => ""}/
+                  / %div
+                  /   %label{:for => "last-name"}
+                  /   %input#password-confirm{"data-required" => "true", "data-type" => "last-name", :name => "password-confrm", :placeholder => "Confirm password", :type => "password", :value => ""}/
+                  / %a.btn{:href => "#step-create-account"} Create Account
+          / #step-sign-up
+
+        / .intro
+
+        .steps
+          .inner
+            .steps-nav
+              %a{:href => "#step-create-account"} Front
+              %a{:href => "#step-add-stats"} Stats
+              %a{:href => "#step-share-card"} Share
+              .progress-bar
+                .fill
+            .player-card.card-baseball{"data-face" => "front"}
+              .face.face-front
+                .content.for-part-info-b.active{:style => "background-image: url(/img/cards/card1-b.png);"}
+                .content.for-part-info-f{:style => "background-image: url(/img/cards/card-face.png);"}
+              .face.face-back
+                .content.for-part-stats-1b.active.stay{:style => "background-image: url(/img/cards/card2-b.png); background-position: center;"}
+                .content.for-part-stats-1f.stay{:style => "background-image: url(/img/cards/card2-f.png);"}
+                .content.for-part-stats-2b.stay{:style => "background-image: url(/img/cards/card3-b.png);"}
+                .content.for-part-stats-2f.stay{:style => "background-image: url(/img/cards/card3-f.png);"}
+                .content.for-part-stats-3b.stay{:style => "background-image: url(/img/cards/card4-b.png);"}
+                .content.for-part-stats-3f.stay{:style => "background-image: url(/img/cards/card4-f.png);"}
+            #step-create-account.step
+              .content
+                .inner
+                  #part-info-b.part.active
+                    .form
+                      %img{:alt => "", :src => "/img/text-fields/field1-b.png"}/
+                    / END FORM
+                    %a.go-to-step.go-next{:href => "#part-info-f"}
+                      Next
+                      %span.arrow &rarr;
+                  #part-info-f.part
+                    .form
+                      %img{:alt => "", :src => "/img/text-fields/field1-f.png"}/
+                    / END FORM
+                    %a.go-to-step.go-next{:href => "#step-add-stats"}
+                      Next
+                      %span.arrow &rarr;
+            / #step-create-account
+            #step-add-stats.step
+              #part-stats-1b.content.active.part
+                .inner
+                  .form
+                    %img{:alt => "", :src => "/img/text-fields/field2-b.png"}/
+                  %a.go-to-step.go-next{:href => "#part-stats-1f"}
+                    Next
+                    %span.arrow &rarr;
+              #part-stats-1f.content.part
+                .inner
+                  .form
+                    %img{:alt => "", :src => "/img/text-fields/field2-f.png"}/
+                  %a.go-to-step.go-previous{:href => "#part-stats-1b"}
+                    %span.arrow &larr;
+                    Previous
+                  %a.go-to-step.go-next{:href => "#part-stats-2b"}
+                    Next
+                    %span.arrow &rarr;
+              #part-stats-2b.content.part
+                .inner
+                  .form
+                    %img{:alt => "", :src => "/img/text-fields/field3-b.png"}/
+                  %a.go-to-step.go-previous{:href => "#part-stats-1f"}
+                    %span.arrow &larr;
+                    Previous
+                  %a.go-to-step.go-next{:href => "#part-stats-2f"}
+                    Next
+                    %span.arrow &rarr;
+              #part-stats-2f.content.part
+                .inner
+                  .form
+                    %img{:alt => "", :src => "/img/text-fields/field3-f.png"}/
+                  %a.go-to-step.go-previous{:href => "#part-stats-2b"}
+                    %span.arrow &larr;
+                    Previous
+                  %a.go-to-step.go-next{:href => '#part-stats-3b'}
+                    Next
+                    %span.arrow &rarr;
+              #part-stats-3b.content.part
+                .inner
+                  .form
+                    %img{:alt => "", :src => "/img/text-fields/field4-b.png"}/
+                  %a.go-to-step.go-previous{:href => "#part-stats-2f"}
+                    %span.arrow &larr;
+                    Previous
+                  %a.go-to-step.go-next{:href => "#part-stats-3f"}
+                    Next
+                    %span.arrow &rarr;
+              #part-stats-3f.content.part
+                .inner
+                  .form
+                    %img{:alt => "", :src => "/img/text-fields/field4-f.png"}/
+                  %a.go-to-step.go-previous{:href => "#part-stats-3b"}
+                    %span.arrow &larr;
+                    Previous
+                  %a.go-to-step.go-next.btn-go-to-app{:href => "/home/hacked_sign_in"}
+                    Go to USport
+                    %span.arrow &rarr;
+            / #step-add-stats
+            #step-share-card.step
+              .content
+                .inner
+                  %img{:alt => "", :src => "/img/text-fields/share.png"}/
+                  %a.go-to-step.go-next.btn-go-to-app{:href => "/home/hacked_sign_in"}
+                    Go to USport
+                    %span.arrow &rarr;
+            / #step-share-card
+          / .inner
+        / .steps
+
+      / .wrapper
+    / .section.primary
+    /
+      <div class="footer section">
+      <div class="wrapper">
+      <h5>Footer content</h5>
+      </div>
+      </div>
+
+    :javascript
+
+      var videoSources = new Array(
+        '/videos/baseball.mp4'
+      );
+      var videoCount = videoSources.length;
+      var i = 0;
+      function nextVideo() {
+        console.log('Video ended.');
+        i++;
+        if (i == (videoCount-1)){
+          i = 0;
+          playVideo(i);
+        }
+        else {
+          playVideo(i);
+        }  
+      }
+
+      function playVideo(videoNum) {
+        console.log('Playing video '+videoNum);
+        
+        $("#video-bg source").attr('src',videoSources[videoNum]);
+        $("#video-bg")[0].load();
+        $("#video-bg")[0].play();
+      }
+      $(window).load(function() {
+        $('.pitch').flexslider({
+          animation: "slide",
+          slideshowSpeed: 3000, 
+          controlNav: false,
+          directionNav: false,
+          animationSpeed: 500
+        });
+      });
+      function sizeVideo(){
+        $('#video-bg').css({'min-height':$(window).height(),'min-width':$(window).width()});
+      }
+      $(window).resize(function(){
+        // sizeVideo();
+      });
+      $(document).ready(function(){
+        // sizeVideo();
+        console.log('videoCount: '+videoCount);
+        
+        $("#video-bg").bind("ended", function() {
+          console.log('Video ended.');
+          i++;
+          if (i == (videoCount-1)){
+            i = 0;
+            playVideo(i);
+          }
+          else {
+            playVideo(i);
+          }  
+        });
+
+        // $("#video-bg").html('<source src="'+videoSources[0]+'" type="video/mp4">');
+        // playVideo(0);
+        // $video[0].play();
+        // $('#video-bg').addEventListener('ended',myHandler,false);
+
+        //fade in the content 
+
+        $(".intro").addClass('fadeIn');
+
+        $('.loadIn').css('opacity',0); // prepare card for animation
+
+        // Set up page at load
+
+        $('.steps, .steps .step, .part:not(.active), [class*="for-step-"]:not(.active), [class*="for-part-"]:not(.active)').hide(); // hide all steps besides intro
+        
+
+
+        window.setTimeout( // animate player card
+          function(){
+            $('.hero .for-step-sign-up').addClass('animated fadeIn');
+          }
+        , 500);
+
+        window.setTimeout( // animate player card
+          function(){
+            $('.intro .player-card').addClass('animated fadeIn');
+          }
+        , 900);
+
+        window.setTimeout( // animate player card
+          function(){
+            $('.loadIn').addClass('animated fadeIn');
+          }
+        , 1500);
+
+        // end setup
+
+        $('.player-card').hover(function(){
+          $(this).toggleClass('flip');
+        });
+        
+        // handle the links between steps
+        $('[href*="#step-"]').click(function(e){
+
+          console.log($(e.target).attr('href'));
+
+          // if coming from the intro step, hide it and switch to the sign-up flow
+          if ($(this).parents('.intro').length) {
+            $('.intro').hide();
+            $('.steps').fadeIn();
+          }
+
+          var newSlide = $($(e.target).attr('href'));
+          if (!$(newSlide).hasClass('active')) {
+            goToSlide(newSlide);  
+          }
+          if ($('.part',newSlide).length) {
+            goToPart($('.part',newSlide).eq(0));
+          }
+
+        });
+
+        // handle the links between parts
+        $('[href*="#part-"]').click(function(e){
+
+          var newPart = $($(e.target).attr('href'));
+          if (!$(newPart).hasClass('active')) {
+            goToPart(newPart);  
+          }
+          console.log($(e.target).attr('href'));
+
+        });
+
+        function goToPart(newPart) {
+
+          var newID = $(newPart).attr("id");
+          
+          $('.for-'+newID).siblings('[class*="for-"]').removeClass('active').not('.stay').hide();
+          $('.for-'+newID).nextAll('.stay').hide();
+
+          $('.part#'+newID).siblings('.part').removeClass('active').hide();
+          $('.for-'+newID).addClass('active').fadeIn();
+          
+          $('.form',newPart).css('opacity',0);
+          $(newPart).addClass('active').show();
+          $('.form',newPart).animate({opacity:1},500);
+
+        }
+
+        // hide current step, show next step, and update body
+        // with unique class name for active step */
+        function goToSlide(newSlide) {
+
+          var newID = $(newSlide).attr("id");
+          $('body').removeClass('active-' + $('.step.active').attr('id'));
+          
+          $('[class*="for-step-"]').removeClass('active').hide();
+          $('.steps-nav a').removeClass('active');
+          $('.step.active').removeClass('active').hide();
+          $('.steps-nav [href="#'+newID+'"]').addClass('active');
+          $('.for-'+newID).addClass('active').fadeIn();
+          $('.form',newSlide).css('opacity',0);
+          $(newSlide).addClass('active').show();
+          $('.form',newSlide).animate({opacity:1},500);
+          $('body').addClass('active-' + newID);
+
+          if (newID == "step-add-stats") {
+            $('.steps .player-card').attr('data-face','back');
+          }
+          else {
+            $('.steps .player-card').attr('data-face','front');
+          }
+
+          if (newID == "step-share-card") {
+            goToPart($('#part-info-f'));
+          }
+
+        }
+
+      });
+
+    :javascript
+
+      // Via http://stackoverflow.com/a/11559652
+
+      var min_w = 300; // minimum video width allowed
+      var vid_w_orig;  // original video dimensions
+      var vid_h_orig;
+
+      $(function() { // runs after DOM has loaded
+
+          vid_w_orig = parseInt($('video').attr('width'));
+          vid_h_orig = parseInt($('video').attr('height'));
+
+          $(window).resize(function () { resizeToCover(); });
+          $(window).trigger('resize');
+      });
+
+      function resizeToCover() {
+
+          // set the video viewport to the window size
+          $('#video-viewport').width($('html').width());
+          $('#video-viewport').height($('html').height());
+
+          // use largest scale factor of horizontal/vertical
+          var scale_h = $('html').width() / vid_w_orig;
+          var scale_v = $('html').height() / vid_h_orig;
+          var scale = scale_h > scale_v ? scale_h : scale_v;
+
+          // don't allow scaled width < minimum video width
+          if (scale * vid_w_orig < min_w) {scale = min_w / vid_w_orig;};
+
+          // now scale the video
+          $('video').width(scale * vid_w_orig);
+          $('video').height(scale * vid_h_orig);
+          // and center it by scrolling the video viewport
+          $('#video-viewport').scrollLeft(($('video').width() - $(window).width()) / 2);
+          $('#video-viewport').scrollTop(($('video').height() - $(window).height()) / 2);
+
+          
+      };

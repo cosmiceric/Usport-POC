@@ -1,0 +1,13 @@
+%h2 Request Access
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, :required => true, :autofocus => true
+    = f.input :password, :required => true
+    = f.input :password_confirmation, :required => true
+    =text_area_tag 'test', "This privacy policy sets out how [business name] uses and protects any information that you give [business name] when you use this website. [business name] is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this privacy statement. [business name] may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes. This policy is effective from [date].What we collect We may collect the following information", :readonly=> true, :style=>'width:300px; height:100px;'
+    %p
+      %div{:onclick=>"$('#submit-button').show().removeAttr('disabled');$('#access-button').hide();", :class=>'btn btn-primary', :id=>'access-button'} I agree with the above disclaimer
+  .form-actions
+    = f.button :submit, "Request Access", :style=>'display:none', :id=>'submit-button', :class=> 'btn btn-primary', :disabled => 'true'
+= render "devise/shared/links"

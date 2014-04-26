@@ -1,0 +1,65 @@
+.page
+  .player
+    %header
+      .module-area
+        .card-preview{:style=> "background: url('#{@card.image.url(:profile_lg)}')"}
+          %a(href="#" class="button") Collect
+
+        .brief-info
+          %h1.name=@card.name
+          %span.number="##{@card.jersey_number}"
+          %span.team=@card.team.name
+          %span.throw-bat="Throws: #{@card.throws}"
+          %span.throw-bat="Bats: #{@card.bats}"
+          %span.dob=@card.date_of_birth.strftime('%b %d, %Y')
+          %span.experience 6 years
+          %span.physical="#{@card.height} - #{@card.weight} lbs."
+
+        .upcoming
+          / %h1 Next Game:
+          / .openent
+          /   %img.logo= image_tag @card.team.logo.url(:small)
+          /   (src="/images/az-logo.png")
+          /   %span.state=@card.team.state
+          /   %span.team=@card.team.next_match_team_name
+          .box
+            %h2 Followers
+            .followers
+              53
+          .box
+            %h2 Contacts
+            .fans
+              21
+          .box.nextgame
+            %h2 Next Game
+            %img.team-logo(src="/images/tp-falcons-logo.png")
+            .fields
+              .school-name Torrey Pines
+              .team-name Falcons
+              .date-time 9/31 at 7PM
+
+              
+
+      .filter-menu
+        %a(href="#" class="active") Profile<span class="indicator"></span>
+        %a(href="#") Stats
+        %a(href="#") Analysis
+        %a(href="#") Media
+        %a(href="#") Sponsors
+        %a(href="#") Endorsements
+    /===End Header
+
+    = render :partial => "home/profile_sections/player_profile"
+    = render :partial => "home/profile_sections/player_stats"
+    = render :partial => "home/profile_sections/player_analysis"
+    = render :partial => "home/profile_sections/player_media"
+    = render :partial => "home/profile_sections/player_sponsors"
+    = render :partial => "home/profile_sections/player_endorsements"
+
+
+-if !params[:card_id].blank?
+  %script
+    // Still not working right - only works when the coverflow is unhidden.  Leaving here for future ref.
+    // setTimeout needed to allow proper cs initialization, even after $.ready
+    ="cardIndex = $('[data-card_id=#{params[:card_id]}]').index();"
+    -# setTimeout("$coverflowContainer.coverflow('select',cardIndex)",500);

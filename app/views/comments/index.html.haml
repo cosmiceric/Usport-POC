@@ -1,0 +1,22 @@
+%h4
+  Comments for 
+  =link_to @feed_entry.content, feed_entries_path
+
+%table
+  %tr
+    %th Comment
+    %th Card
+    %th
+    %th
+    %th
+
+  - @comments.each do |comment|
+    %tr
+      %td= comment.comment
+      %td= comment.card.name unless comment.card.blank?
+      / %td= link_to 'Edit', edit_feed_entry_comment_path(@feed_entry_id,comment)
+      %td= button_to 'Destroy', feed_entry_comment_path(@feed_entry, comment), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Comment', new_feed_entry_comment_path

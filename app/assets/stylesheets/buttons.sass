@@ -1,0 +1,28 @@
+=button($top, $text)
+	$bottom: darken($top,10%)
+	display: inline-block
+	padding: .55em .75em
+	font-size: .75em
+	color: $text
+	text-decoration: none
+	border-radius: 4px
+	border: 1px solid darken($top,6%)
+	border-top: 1px solid lighten($top,12%)
+	text-shadow: 1px 1px 0 darken($top,12%)
+
+	// Gradient Set Up
+	$fallback: rgb(189,189,189)
+	$start: rgba(189,189,189,1)
+	$end: rgba(160,160,160,1)
+	+gradient-bg($top, x, $top, $bottom)
+
+	&:hover
+		+gradient-bg($top, x, $bottom, $top)
+
+
+.button + .button
+	margin-left: .5em
+
+.stats .button
+	width: 100%
+	text-align: center

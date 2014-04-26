@@ -1,0 +1,59 @@
+= simple_form_for @card do |f|
+  - if @card.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@card.errors.count, "error")} prohibited this card from being saved:"
+      %ul
+        - @card.errors.full_messages.each do |msg|
+          %li= msg
+  =image_tag @card.image.url(:small)
+  .field
+    =f.label :image
+    =f.file_field :image
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.association :team
+  .field
+    = f.input :date_of_birth, :start_year=>1900, :end_year => 2009
+  .field
+    = f.label :height
+    = f.text_field :height
+  .field
+    = f.label :weight
+    = f.number_field :weight
+  .field
+    =f.label :position
+    =f.text_field :position
+  .field
+    = f.label :jersey_number
+    = f.text_field :jersey_number
+  .field
+    = f.label :throws
+    = f.text_field :throws
+  .field
+    = f.label :bats
+    = f.text_field :bats
+  .field
+    = f.input :followers
+  .field
+    = f.input :collected
+  .field
+    = f.input :on_base_percentage
+  .field
+    = f.input :home_runs
+  .field
+    = f.input :runs
+  .field
+    = f.input :runs_batted_in
+  .field
+    = f.input :stolen_bases
+  .field
+    = f.input :highlights
+
+  .actions
+    =f.submit
+    %button{:onclick=>'this.form.submit()'} Save

@@ -1,0 +1,204 @@
+
+/ The grid of cards
+.card-collection
+  / Collection toolbar
+  %header
+    %nav
+      .title
+        %h1
+          My Collection
+      / Filter the cards in view
+      .filter
+        %ul
+          %li
+            %a(href="#" class="current") All
+          %li
+            %a(href="#") Players
+          %li
+            %a(href="#") Coaches
+          %li
+            %a(href="#") Teams
+      / Sort the visible cards
+      .sort
+        %label(for="search-collection") Sort by:
+        %select(name="search-collection")
+          %option Last Updated
+          %option Two
+          %option Three
+      / Search the user's card collection
+      .search
+        %input(type='text' placeholder='Search Collection')
+      / Close the card collection view
+      .close
+        %a(href="#" class="close") &times;
+  / View of cards in collection
+  .cards
+    - Card.all.each do |card|
+      / Single card
+      .card
+        / Front of card
+        .face.front{:style=> "background-image: url('#{card.image.url(:card)}') !important"}
+          / Player number
+          .badge 
+            6
+          / Player info
+          .info
+            %h1.name=card.name
+            %h2.team=card.team.name
+        / Back of card
+        .face.back
+          / Header of card back
+          .header
+            .column.column-1
+              %img.profile-photo(src='http://placehold.it/170x170&text=Profile photo' alt='')
+            .column.column-2
+              %h1.player-name=card.name
+              / Overview of player stats
+              .stats
+                
+                %table
+                  %tbody
+                    %tr
+                      %td.jersey #55 SP
+                      %td.throws 
+                        Throws:
+                        =card.throws
+                      %td.bats
+                        Bats
+                        =card.bats
+                      %td.location=card.team.state
+                    %tr
+                      %td.birthdate
+                        =card.date_of_birth.strftime('%B %d, %Y')
+                        ="(#{card.age} years)"
+                      %td.experience 6 years
+                    %tr
+                      %td.team=card.team.name
+                      %td.height=card.height
+                      %td.weight
+                        =card.weight
+                        lbs.
+
+              / Player-spacific actions
+              .actions
+                %a.button.collect(href='#') Collect Card
+                %a.button.view-profile(href='#') View Profile
+            .column.column-3
+              / The player's next matchup
+              .next-game
+                %h3 Next Game:
+                %h4.summary Arizona @ SF
+                %p.preview
+                  Suspendisse potenti. Nullam rutrum lorem lectus, non euismod metus posuere id. Nunc aliquet ligula purus, eu vestibulum elit tincidunt vel. Nulla tincidunt felis mauris, vitae condimentum tellus convallis nec.
+          / Main content of card back
+          .profile
+            / A table of recent stats
+            .section.stats-recent
+              %h4.section-title Recent Stats
+              %table
+                %thead
+                  %th
+                  %th ERA
+                  %th W - L
+                  %th SO
+                  %th WHIP
+                %tbody
+                  %tr
+                    %th 2013 Season
+                    %td 4.26
+                    %td 5-9
+                    %td 125
+                    %td 1.33
+                  %tr
+                    %th 2012 Season
+                    %td 4.26
+                    %td 5-9
+                    %td 125
+                    %td 1.33
+                  %tr
+                    %th 2011 Season
+                    %td 4.26
+                    %td 5-9
+                    %td 125
+                    %td 1.33
+                  %tr.career
+                    %th Career
+                    %td 3.40
+                    %td 84-65
+                    %td 1442
+                    %td 1.24
+            / A chart of stats for current year       
+            .section.stats-2013
+              %h4.section-title 2013 Detail Stats
+              / This will be replaced by a generated chart
+              / Flot? http://flotcharts.org/
+              %img.logo(src='http://placehold.it/800x350&text=Chart: Detail Stats')
+            / A list of recent acheivements
+            .section.achievements-recent
+              %h4.section-title Recent Achievements
+              %ul.list-achievements
+                %li.achievement
+                  %a(href='#')
+                    / Each achievement has an icon,
+                    / based on the type of achievement
+                    .type stats
+                    .year 2013
+                    .name No-Hitter
+                %li.achievement
+                  %a(href='#')
+                    / Each achievement has an icon,
+                    / based on the type of achievement
+                    .type team-award
+                    .year 2012
+                    .name World Series Champion
+                %li.achievement
+                  %a(href='#')
+                    / Each achievement has an icon,
+                    / based on the type of achievement
+                    .type player-award
+                    .year 2011
+                    .name National League All-Star
+              
+            .section.endorsements
+              / A list of sponsors, represented by logos
+              %ul.list-sponsors
+                %li.sponsor
+                  %a(href='#')
+                    %img.logo(src='http://placehold.it/200x100&text=Sponsor' alt='Sponsor name')
+                %li.sponsor
+                  %a(href='#')
+                    %img.logo(src='http://placehold.it/200x100&text=Sponsor' alt='Sponsor name')
+                %li.sponsor
+                  %a(href='#')
+                    %img.logo(src='http://placehold.it/200x100&text=Sponsor' alt='Sponsor name')
+                %li.sponsor
+                  %a(href='#')
+                    %img.logo(src='http://placehold.it/200x100&text=Sponsor' alt='Sponsor name')
+              %h4.section-title Endorsements
+            / A single video, with description
+            .section.videos-latest
+              %h4.section-title Latest Video
+              <iframe src="http://player.vimeo.com/video/2822787?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="550" height="310" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+              %a.title(href='#') Game 3 - Giants @ Dodgers
+              %p.description
+                Fusce bibendum condimentum magna, sed aliquam neque dictum id. Nunc a leo rutrum, tempus sem vel, tempor augue. Phasellus id sapien at felis sodales mattis ac sed lacus. Aenean eget turpis tellus.
+            / A grid of photos
+            .section.photos
+              %h4.section-title Photos
+              %ul.list-images
+                %li.image
+                  %a(href='#')
+                    %img(src='http://lorempixel.com/170/170/sports/1' alt='')
+                %li.image
+                  %a(href='#')
+                    %img(src='http://lorempixel.com/170/170/sports/2' alt='')
+                %li.image
+                  %a(href='#')
+                    %img(src='http://lorempixel.com/170/170/sports/3' alt='')
+                %li.image
+                  %a(href='#')
+                    %img(src='http://lorempixel.com/170/170/sports/4' alt='')
+                %li.image
+                  %a(href='#')
+                    %img(src='http://lorempixel.com/170/170/sports/5' alt='')
+                  

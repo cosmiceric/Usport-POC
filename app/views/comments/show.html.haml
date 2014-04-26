@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Comment:
+  = @comment.comment
+%p
+  %b Feed entry:
+  = @comment.feed_entry_id
+
+= link_to 'Edit', edit_feed_entry_comment_path(@feed_entry,@comment)
+\|
+= link_to 'Back', comments_path

@@ -1,0 +1,89 @@
+.player-profile.player-section
+	.stat-snapshot
+		%h2 Stats Snapshot
+		%table
+			%thead
+				%tr
+					%th
+					%th.middle 2013
+					%th.middle 2012
+					%th
+			%tbody
+				%tr
+					%th R
+					%td.runs 274
+					%td.runs 274
+					%td
+						.arrow-down
+				%tr
+					%th HR
+					%td.home-runs 274
+					%td.home-runs 274
+					%td
+						.arrow-up
+				%tr
+					%th RBI
+					%td.rbi 274
+					%td.rbi 274
+					%td
+						.arrow-up
+				%tr
+					%th SB
+					%td.sb 274
+					%td.sb 274
+					%td
+						.arrow-up
+				%tr
+					%th AVG
+					%td 274
+					%td 274
+					%td
+						.arrow-up
+				%tr
+					%th OBP
+					%td.obp 274
+					%td.obp 274
+					%td
+						.arrow-up
+	.achievements
+		%h2 Achievements
+		%ul
+			%li
+				%p
+					Rookie of the Year
+				%span.date 2012
+			%li
+				%p
+					Championship Team Member
+				%span.date 2011
+			/ %li
+			/ 	%a(href="#")
+			/ 		%img(src="/images/profile-icons/series.png")
+			/ 		%span.date 2012
+			/ 		%span.type Achievement
+			/ %li
+			/ 	%a(href="#")
+			/ 		%img(src="/images/profile-icons/spire.png")
+			/ 		%span.date 2012
+			/ 		%span.type Achievement
+	.endorsements
+		%h2 Endorsements
+		.endorsement
+			.author
+				%img(src="/images/endorsee-1.png" width="48" height= "48")
+				.byline
+					%span(class="name") Charlie Dean
+					%br/
+					%span(class="affiliation") River High School
+		.endorsement
+			.author
+				%img(src="/images/endorsee-2.png" width="48" height= "48")
+				.byline
+					%span(class="name") Sam Bronner
+					%br/
+					%span(class="affiliation") Sluggers Baseball Conditioning
+
+		/ %img(src="/images/speedstick.png" alt="soemthing")
+		/ %img(src="/images/rawlings.png" alt="soemthing")
+
+	= render :partial => 'home/feed'

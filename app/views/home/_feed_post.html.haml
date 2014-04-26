@@ -1,0 +1,114 @@
+/ .post
+/ / The post owner's profile pic
+/ %img(class="posted-by" src="http://flickholdr.com/100/100")
+/ .content
+/ 	.post-owner
+/ 		/ The post owner's name
+/ 		%a(href="person") David Roney
+/ 		/ The post text
+/ 		%p
+/ 			Last nights game was awesome!
+/ 	= render :partial => 'post_type_content'
+/ 	/ Each feedback div is for a comment on the post
+/ 	= render :partial => 'feedback'
+/ 	/ Area to add feedback to a post
+/ 	.feedback
+/ 		/ Feedback content
+/ 		%input(type="text" placeholder="Comment here...")
+/ 		/ High Five the player
+/ 		%a(class="high-five" href="#") &#xe001
+/ 		/ Share the post
+/ 		%a(class="share" href="#") &#xe000
+/ 	.posted-at
+/ 		%p
+/ 			45 min
+/ .total-feedback
+/ 	%p
+/ 		/ Counts for comments and High Fives on the post
+/ 		%a(href="#") 12 More Comments
+/ 		<span class="seperator">|</span> 21 High Fives
+
+-ifsponsored = feed_entry.entry_type == 'ad-sponsored' ? 'sponsored' : ''
+
+.post{:id => "feed_entry_#{feed_entry.id}", :class=> ifsponsored }
+	-unless feed_entry.card.blank? || feed_entry.card.image.blank?
+		=image_tag feed_entry.card.image.url(:small), :class=>"posted-by"
+	.content
+		.post-owner
+			-unless feed_entry.card.blank?
+				=link_to feed_entry.card.name, '/player/' + feed_entry.card.id.to_s
+			%p
+				=feed_entry.content.html_safe
+
+		-case feed_entry.entry_type
+		-when 'photos'
+			.album
+				-3.times do
+					-offset = rand(Image.count)
+					=image_tag Image.first(:offset => offset).image_file.url(:feed)
+		-when 'events'
+			.event
+				.event-image
+					&#xe005
+				.event-data
+					%h1 Santa Cruz at Watsonville
+					%span.location Santa Cruz Arena
+					%span.day October 12 2013
+					%span.time 8pm
+		-when 'video'
+			/TODO: no video methods yet
+		-when 'achievement'
+			.achievement
+				.achievement-image
+					&#xe007
+				.achievement-data
+					%h1 Earned Super Slugger
+		-when 'ad-sponsored'
+			.ad
+				.ad-image
+					%img(src="/images/batad.jpg")
+				.ad-data
+					%h1 PERFORMANCE / TECHNOLOGY
+					%p
+						We hit the drawing board and looked at processes both old and new to build the next generation of wood bats. Cut from the best-quality wood on the market and forged to have no soft spots, the MLB Prime is the exact same bat the pros use. It's also the hardest Louisville Slugger bat ever.
+		-when 'ad-inline'
+			.ad
+				.ad-image
+					%img(src="/images/nikecleats.jpg")
+				.ad-data
+					%h1 Nike Baseball
+					%p
+						Own the same gear that the game's best players wear. Introducing Mike Trout's player edition Diamond Elite Pro II fielding glove and The Real Matt Kemp's player edition SHA|DO Elite J fielding glove.
+		-when 'stats'
+			.graph
+				.graph-image
+					&#xe006
+				.graph-data
+					%h1 New Homerun Record
+
+
+		-if feed_entry.entry_type.first(2) != 'ad'
+			.comments
+				-feed_entry.comments.each do |comment|
+					= render :partial => 'comment', :locals=> {:comment => comment}
+
+			/ Area to add feedback to a post
+			.feedback
+				/ Feedback content
+
+				=form_tag "/home/comment", :remote => true do
+					=hidden_field_tag "feed_entry_id", feed_entry.id
+					=hidden_field_tag "card_id", @user_card.id
+					=text_field_tag "comment", '', :placeholder => 'Comment here...'
+
+					/ %input(type="text" placeholder="Comment here...")
+					/ High Five the player
+					%a(class="high-five" href="#") &#xe00b
+					/ Share the post
+					%a(class="share" href="#") &#xe00c
+
+	.total-feedback
+		%p
+			/ Counts for comments and High Fives on the post
+			%a(href="#") 12 More Comments
+			| 21 High Fives

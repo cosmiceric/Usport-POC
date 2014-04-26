@@ -1,0 +1,134 @@
+#cards 
+	clear: both
+	overflow-x: hidden
+	overflow-y: auto
+
+.ui-coverflow-wrapper
+	position: relative
+	overflow: hidden
+
+.ui-coverflow
+	-webkit-perspective: 1000px
+	-moz-perspective: 1000px
+	-ms-perspective: 1000px
+	-o-perspective: 1000px
+	perspective: 1000px
+	// position: absolute
+	position: relative
+
+.ui-coverflow-item
+	position: relative
+	cursor: pointer
+	float: left
+
+.ui-state-active!
+
+.ui-coverflow-item
+	&:hover
+		cursor: move
+	&:focus
+		outline: 0
+
+.ui-coverflow img
+	-webkit-user-drag: none
+	-moz-user-drag: none
+	-ms-user-drag: none
+	-o-user-drag: none
+	user-drag: none
+	border: 0 none
+	
+.card.flipped
+	-webkit-transform: rotatey(-180deg)
+	position: relative
+	z-index: 1
+
+.card
+	-webkit-transform-style: preserve-3d
+	//-webkit-transition: 0.5s
+	float: left
+	margin: 1.5em
+	margin-top: 0
+	// original card ratio, of width divided by height: 1.390625 
+	// in other words: 445:320, or 89:64
+	
+	width: 212px
+	height: 295px
+
+	h1
+		font-size: 2.5em
+		margin: 0 0 .65em 0
+
+	h2
+		font-size: 1.5em
+		margin: 0
+		text-transform: uppercase
+
+	.info
+		background-color: $card-info
+		border-bottom-left-radius: 7px
+		border-bottom-right-radius: 7px
+		text-align: left
+		bottom: 0
+		left: 0
+		color: rgb(250,250,250)
+		padding: 1em
+		position: absolute
+		width: 100%
+		.name
+			margin: 0
+			padding: 0
+
+	.badge
+		background-color: $cardinals2
+		border-radius: 50%
+		color: #fafafa
+
+		font-size: 1.5em
+		font-weight: bold
+
+		display: table-cell
+		height: 34px
+		width: 34px
+
+		position: relative
+		left: 185px
+		top: 13.25px
+
+		text-align: center
+		vertical-align: middle
+
+	.face
+		background-color: $cardinals
+		background-image: url(/images/player-card.png)
+		background-repeat: no-repeat
+		background-position: center
+		background-size: contain
+
+		//position: relative
+		-webkit-backface-visibility: hidden
+		z-index: 2
+
+		width: 100%
+		height: 100%
+
+	.front
+		border-radius: 10px
+		border: #fafafa 4px solid
+		cursor: pointer
+		float: left
+		// margin: 1.5em
+		z-index: 1
+		position: relative
+
+	.back
+		position: absolute
+		top: 0
+		-webkit-transform: rotatey(-180deg)
+		height: auto
+		width: 800px//(320px*2.5)
+		z-index: 1
+		left: 0
+
+		display: inline-block
+		z-index: 10
+		background-color: $dark-grey

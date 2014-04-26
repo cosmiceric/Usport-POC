@@ -1,0 +1,139 @@
+header
+	background: rgb(49,49,49)
+	border-bottom: 1px solid rgb(33,33,33)
+
+	a
+		color: rgb(168,168,168)
+		font-weight: 400
+		&:hover
+			color: $l-grey
+
+	a.current
+		color: $white
+
+	nav
+		max-width: 1024px
+		margin: auto
+		padding: 0 1em
+
+	.title
+		color: $white
+		float: left
+		margin-right: 1em
+		padding: .55em 0 0 0
+		a
+			font-size: 2em
+			line-height: 1.15em
+			font-family: $tungsten
+			font-weight: 900
+			font-style: italic
+			&:hover
+				color: #A8A8A8
+		span
+			color: white
+			&:hover
+				color: white
+
+
+	.title, .links, .search, .quick-links
+		display: inline-block
+		vertical-align: middle
+
+	.links, .quick-links
+		li
+			display: inline-block
+			margin: 0 .7em
+
+	.links
+		font-size: .8rem
+		li
+			color: $white
+			padding: 1.5em 0 1.2em 0
+
+	.quick-links
+		li
+			padding: 1em 0
+
+	input
+		background: url(/images/search.png) no-repeat rgba(0, 0, 0, 0)
+		background-position: 90% center
+		background-size: .9em
+		border: 1px solid rgb(168,168,168)
+		border-radius: 2em
+		color: $white
+		padding: .55em .5em .4em 1em
+		margin: 0
+		font-size: .8rem
+		font-family: $gotham
+		width: 6.5em
+		-webkit-transition: all .2s
+		transition: all .2s
+		&:focus
+			background-size: .9em
+			border: 1px solid $white
+			outline: none
+			width: 11em
+
+		+search-placeholder-color($white)
+
+	.open-collection
+		+gradient-bg($red, x, rgb(80,80,80), rgb(50,50,50))
+		border: 1px solid rgb(35,35,35)
+		border-radius: 3px
+		box-shadow: inset 0px 1px 0px rgb(100,100,100), 0px 3px 0px rgb(45,45,45)
+		color: $m-grey
+		margin: 0 1em 0 2em
+		padding: .45em .9em
+		position: relative
+		text-shadow: 1px 0 0 $black
+		vertical-align: middle
+		z-index: 1
+		&:active
+			box-shadow: inset 0px -1px 0px $off-black
+			+gradient-bg($red, x, rgb(45,45,45), rgb(55,55,55))
+			color: $l-grey
+			//border: 1px solid rgb(40,40,40)
+			top: 2px
+			&:before
+				top: -4px
+		&:hover
+			color: $m-grey
+	.quick-links
+		float: right
+		li
+			border-left: 1px solid darken($d-grey, 6%)
+			box-shadow: -1px 0 0 $black
+			margin: 0
+			padding: 0
+			a
+				display: block
+				font-size: 1.1rem
+				padding: 1rem
+			&:last-child
+				border-right: 1px solid darken($d-grey, 10%)
+				box-shadow: 1px 0 0 $black, -1px 0 0 $black
+
+			.gear
+				font-size: 1.25rem
+
+	.you, .gear
+		@extend %icon-font
+		position: relative
+	.notifications-count
+		font-family: $gotham
+		position: absolute
+		top: 0
+		right: -.25em
+		background-color: $d-red
+		border-radius: 50%
+		color: #fafafa
+		font-size: .9em
+		font-weight: bold
+
+		display: table-cell
+		height: 1.5em
+		width: 1.5em
+		line-height: 1.6em
+		text-align: center
+
+

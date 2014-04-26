@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  team_id: 1
+  sport_id: 1
+  date_of_birth: 2013-07-30
+  height: MyString
+  weight: 1
+  jersey_number: MyString
+  throws: MyString
+  bats: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  team_id: 1
+  sport_id: 1
+  date_of_birth: 2013-07-30
+  height: MyString
+  weight: 1
+  jersey_number: MyString
+  throws: MyString
+  bats: MyString

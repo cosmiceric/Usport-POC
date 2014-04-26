@@ -1,0 +1,2 @@
+$("#feed_entry_<%= @feed_entry.id %> .comments").append("<%=j render :partial=>"comment", :locals=>{:feed_entry=>@feed_entry, :comment => @comment, :@card => @card}%>").find(':last').effect('highlight', {}, 1000); 
+$("#feed_entry_<%= @feed_entry.id %> #comment").val('');

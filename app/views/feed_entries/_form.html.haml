@@ -1,0 +1,27 @@
+= simple_form_for @feed_entry do |f|
+  - if @feed_entry.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@feed_entry.errors.count, "error")} prohibited this feed_entry from being saved:"
+      %ul
+        - @feed_entry.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    =f.association :card
+    = f.label :content
+    = f.text_area :content
+    %br
+    = f.input :entry_type, collection: FEED_ENTRY_TYPES + ['ad-sponsored', 'ad-inline', 'achievement']
+    / = f.file_field :image
+    / = f.file_field :image2
+
+  %br
+  .actions
+    = f.submit 'Save', :class=>'btn btn-primary'
+
+
+:javascript
+  tinyMCE.init({
+  mode: 'textareas'
+  // theme: 'advanced'
+  });

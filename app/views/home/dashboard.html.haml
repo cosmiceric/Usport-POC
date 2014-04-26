@@ -1,0 +1,10 @@
+= render :partial => 'collection'
+
+#main-body.dashboard
+  = render :partial => 'home/feed'
+
+:javascript
+  // HACK to open 3rd card in collection in dash.  setTimeout was needed to allow cs to initialize. $.ready 
+  // didn't work.
+  setTimeout("$('.open-collection').click();$coverflowContainer.coverflow('select',7)",500)
+  

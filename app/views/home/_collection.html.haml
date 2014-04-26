@@ -1,0 +1,341 @@
+.collection
+
+  .player-overview
+    .wrapper
+      .name
+        %h1 Hunter Phillips
+      .info
+        %ul
+          %li
+            %h2 Followers
+            %span.data
+              .followers 87
+          %li
+            %h2 Contacts
+            %span.data
+              .collected 53
+          %li
+            %h2 Team
+            %span.data
+              .team Santa Cruz
+          %li
+            %h2 Next Game
+            %span.data
+              .nextgame Stanford
+              .date-time 9/31 at 7PM
+  .cards
+    .overlay.overlay-left
+    .overlay.overlay-right
+    -if params[:action] == 'dashboard'
+      #cardflow
+        - 1.times do
+          - Card.all.each do |card|
+            -rand_team1 = @card.random_team
+            -rand_team2 = @card.random_team
+            -rand_team3 = @card.random_team
+
+            / Single card
+            .card{:href         =>"/home/player",
+              :id               => "cs_card_#{card.id}",
+              "data-name"       =>"#{card.name}",
+              "data-followers"  =>"#{card.followers}",
+              "data-collected"  =>"#{card.collected}",
+              "data-team"       =>"#{card.team.name}",
+              "data-nextgame"   =>"#{card.team.next_match_team_name}",
+              "data-primary_color"=>"#{card.team.primary_color}",
+              "data-card_id"    =>"#{card.id}",
+              "data-highlights" =>"#{simple_format card.highlights}",
+              "data-runs"       =>"#{card.runs}",
+              "data-home-runs"  =>"#{card.home_runs}",
+              "data-rbi"        =>"#{card.runs_batted_in}",
+              "data-sb"         =>"#{card.stolen_bases}",
+              "data-obp"        =>"#{card.on_base_percentage.to_s.last(4)}",
+
+              "data-runs2"      =>"#{card.next_card.runs}",
+              "data-home-runs2" =>"#{card.next_card.home_runs}",
+              "data-rbi2"       =>"#{card.next_card.runs_batted_in}",
+              "data-sb2"        =>"#{card.next_card.stolen_bases}",
+              "data-obp2"       =>"#{card.next_card.on_base_percentage.to_s.last(4)}"}
+
+              / ADD FIELDS BELOW TO ABOVE HASH BELOW FOR DYNAMIC TEAM RELOADS
+
+              / "data-team1"-name=>"#{card.team.name}",
+              / "data-team1"-w=>"#{card.team.wins}",
+              / "data-team1"-l=>"#{card.team.losses}",
+              / "data-team1"-pct=>"#{card.team.percent}",
+
+              / "data-team2"-name=>"#{card.team.next_match_team.name}",
+              / "data-team2"-w=>"#{card.team.next_match_team.wins}",
+              / "data-team2"-l=>"#{card.team.next_match_team.losses}",
+              / "data-team2"-pct=>"#{card.team.next_match_team.percent}",
+
+              / "data-team3"-name=>"#{rand_team1.name}",
+              / "data-team3"-w=>"#{rand_team1.wins}",
+              / "data-team3"-l=>"#{rand_team1.losses}",
+              / "data-team3"-pct=>"#{rand_team1.percent}",
+
+              / "data-team4"-name=>"#{rand_team2.name}",
+              / "data-team4"-w=>"#{rand_team2.wins}",
+              / "data-team4"-l=>"#{rand_team2.losses}",
+              / "data-team4"-pct=>"#{rand_team2.percent}",
+
+              / "data-team5"-name=>"#{rand_team3.name}",
+              / "data-team5"-w=>"#{rand_team3.wins}",
+              / "data-team5"-l=>"#{rand_team3.losses}",
+              / "data-team5"-pct=>"#{rand_team3.percent}"
+
+              / Front of card
+              .face.front{:style=> "background-image: url('#{card.image.url(:card)}') !important"}
+                / Player number
+                .badge
+                  =rand(1..10)
+                / Player info
+                .info
+                  .bg(style='background-color:#{card.team.primary_color}')
+                  %h1.name=card.name
+                  %h2.team=card.team.name
+
+
+  .card-stats-holder
+    .card-stats
+      .team-standings
+        %h1 Team Standings
+        %table
+          %thead
+            %tr
+              %th TEAM
+              %th W
+              %th L
+              %th 
+
+          / COMMENT OUT BELOW FOR DYNAMIC TEAM RELOADS
+
+          %tbody
+            -@team_rankings.each do |t|
+              %tr
+                %td.team=t.name
+                %td=t.wins
+                %td=t.losses
+                %td=t.percent
+
+
+          / UNCOMMENT BELOW FOR DYNAMIC TEAM RELOADS
+          /    
+          / %tbody
+          /   %tr.highlighted
+          /     %td.team.team1-name Panthers
+          /     %td.team1-wins  62
+          /     %td.team1-losses 37
+          /     %td.team1-percent .679
+          /   %tr
+          /     %td.team.team2-name Panthers
+          /     %td.team2-wins  54
+          /     %td.team2-losses 55
+          /     %td.team2-percent .421
+          /   %tr
+          /     %td.team.team3-name Panthers
+          /     %td.team3-wins  62
+          /     %td.team3-losses 37
+          /     %td.team3-percent .679
+          /   %tr
+          /     %td.team.team4-name Panthers
+          /     %td.team4-wins  62
+          /     %td.team4-losses 37
+          /     %td.team4-percent .679
+          /   %tr
+          /     %td.team.team5-name Panthers
+          /     %td.team5-wins  62
+          /     %td.team5-losses 37
+          /     %td.team5-percent .679
+      .stat-snapshot
+        %h1 Trending Stats
+
+        %table
+          %tr
+            %th
+            %th.middle 2013
+            %th.middle 2012
+            %th
+          %tr.watch
+            %th R
+            %td.runs.num1 274
+            %td.runs2.num2 274
+            %td
+              .arrow.arrow-down
+          %tr.watch
+            %th HR
+            %td.home-runs.num1 274
+            %td.home-runs2.num2 274
+            %td
+              .arrow.arrow-up
+          %tr.watch
+            %th RBI
+            %td.rbi.num1 274
+            %td.rbi2.num2 274
+            %td
+              .arrow.arrow-up
+          %tr.watch
+            %th SB
+            %td.sb.num1 274
+            %td.sb2.num2 274
+            %td
+              .arrow.arrow-up
+          %tr
+            %th AVG
+            %td.num1 274
+            %td.num2 270
+            %td
+              .arrow.arrow-up
+          %tr.watch
+            %th OBP
+            %td.obp.num1 274
+            %td.obp2.num2 274
+            %td
+              .arrow.arrow-up
+
+      / %table
+      /   %thead
+      /     %tr
+      /       %th
+      /       %th
+      /   %tbody
+      /     %tr
+      /       %th.stat R
+      /       %td 274
+      /     %tr
+      /       %th.stat HR
+      /       %td 274
+      /     %tr
+      /       %th.stat RBI
+      /       %td 274
+      /     %tr
+      /       %th.stat SB
+      /       %td 274
+      /     %tr
+      /       %th.stat AVG
+      /       %td 274
+      /     %tr
+      /       %th.stat OBP
+      /       %td 274
+      .highlights
+        %h1 Highlights
+        %span.data
+          .highlights-text
+            %ul
+              %li Hit my second grand slam!
+              %li 2/3, 1hr, 4 RBI in 5-3 win vs Aptos
+              %li Santa Cruz 5 wins in July
+
+:javascript
+  // coverflow.js
+  function centerClick(card_id){
+    card = $("#cs_card_" + card_id);
+    if(card.attr('data-side') === 'center'){
+      // loadPlayerInMainBody(card_id);
+      window.location = '/player/' + card_id
+      }
+  }
+
+  $('.card').on('touchend click',function(){
+    // console.log('You clicked/tapped the card for '+$(this).data('name'));
+    $coverflowContainer.coverflow('select',$(this));
+    centerClick($(this).data('card_id'));
+  });
+  var $coverflowContainer = $( '#cardflow' );
+  var $coverflowItems = $coverflowContainer.children();
+  console.log($coverflowItems);
+  startCoverflow();
+
+  $(window).resize(startCoverflow());
+  function startCoverflow() {
+    $coverflowContainer.coverflow({
+      duration: 150,
+      select : function( ev, ui ) {
+        // Updates the header player name text
+        $('.player-overview .name h1').text(ui.active.data( 'name' ));
+        $('.player-overview .followers').text(ui.active.data('followers'));
+        $('.player-overview .collected').text(ui.active.data('collected'));
+        $('.player-overview .team').text(ui.active.data('team'));
+        $('.player-overview .nextgame').text('@ '+ui.active.data('nextgame'));
+        $('.highlights-text').html(ui.active.data('highlights'));
+        $('.team1-name').text(ui.active.data('team1-name'));
+        $('.team1-wins').text(ui.active.data('team1-w'));
+        $('.team1-losses').text(ui.active.data('team1-l'));
+        $('.team1-percent').text(ui.active.data('team1-pct'));
+        $('.team2-name').text(ui.active.data('team2-name'));
+        $('.team2-wins').text(ui.active.data('team2-w'));
+        $('.team2-losses').text(ui.active.data('team2-l'));
+        $('.team2-percent').text(ui.active.data('team2-pct'));
+        $('.team3-name').text(ui.active.data('team3-name'));
+        $('.team3-wins').text(ui.active.data('team3-w'));
+        $('.team3-losses').text(ui.active.data('team3-l'));
+        $('.team3-percent').text(ui.active.data('team3-pct'));
+        $('.team4-name').text(ui.active.data('team4-name'));
+        $('.team4-wins').text(ui.active.data('team4-w'));
+        $('.team4-losses').text(ui.active.data('team4-l'));
+        $('.team4-percent').text(ui.active.data('team4-pct'));
+        $('.team5-name').text(ui.active.data('team5-name'));
+        $('.team5-wins').text(ui.active.data('team5-w'));
+        $('.team5-losses').text(ui.active.data('team5-l'));
+        $('.team5-percent').text(ui.active.data('team5-pct'));
+        $('.runs').text(ui.active.data('runs'));
+        $('.home-runs').text(ui.active.data('home-runs'));
+        $('.rbi').text(ui.active.data('rbi'));
+        $('.sb').text(ui.active.data('sb'));
+        $('.obp').text(ui.active.data('obp'));
+        $('.runs2').text(ui.active.data('runs2'));
+        $('.home-runs2').text(ui.active.data('home-runs2'));
+        $('.rbi2').text(ui.active.data('rbi2'));
+        $('.sb2').text(ui.active.data('sb2'));
+        $('.obp2').text(ui.active.data('obp2'));
+
+        $('.watch').each(function(index){
+          num1 = parseFloat($(this).children('.num1').html());
+          num2 = parseFloat($(this).children('.num2').html());
+          arrow = $(this).children('td').last().children('div')
+          if(num1 < num2){
+            // alert(num1 + '<' + num2)
+            arrow.addClass('arrow-down').removeClass('arrow-up')
+          }
+          else if (num1 > num2) {
+            arrow.addClass('arrow-up').removeClass('arrow-down')
+          }
+          else{
+            // alert(num1 + '>' + num2)
+            arrow.removeClass('arrow-up arrow-down')
+          }
+        })
+      }
+    });
+  }
+  var middle = $coverflowItems.eq(Math.floor($coverflowItems.length / 2));
+  $coverflowContainer.coverflow('select',middle);
+
+  // kinetic.js
+  var moveCount = 0;
+  $coverflowContainer.kinetic({
+    x: true,
+    y: false,
+    maxvelocity: 1,
+    throttleFPS: 20,
+    moved: function moved(){
+
+      if ($coverflowContainer.hasClass('kinetic-moving-right')) {
+        moveCount++;
+        // console.log(moveCount);
+        if (moveCount >= 0) $coverflowContainer.coverflow( 'next' );
+      }
+      else {
+        moveCount--;
+        // console.log(moveCount);
+        if (moveCount <= 1) $coverflowContainer.coverflow( 'prev' );
+      }
+    },
+    stopped: function stopped(){
+      moveCount = 0;
+    }
+  });
+
+
+
+

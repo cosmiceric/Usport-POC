@@ -1,0 +1,23 @@
+%h1 Listing images
+
+These are just here as filler to be used where needed in the design, for example to simulate user posts in the feed.  The more images that are uploaded, the more interesting the feed becomes....
+
+%table
+  %tr
+    %th Name
+    %th Image File
+    %th
+    %th
+    %th
+
+  - @images.each do |image|
+    %tr
+      %td= image.name
+      %td= image_tag image.image_file.url(:feed)
+      %td= link_to 'Show', image
+      %td= link_to 'Edit', edit_image_path(image)
+      %td= link_to 'Destroy', image, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Image', new_image_path

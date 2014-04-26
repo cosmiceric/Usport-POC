@@ -1,0 +1,28 @@
+$btn-orange-2: rgba(245,139,48,1)
+$btn-orange-1: rgba(216,112,23,1)
+
+a.button
+	display: inline-block
+	padding: .55em .75em
+	font-size: .75em
+	color: #fff
+	text-decoration: none
+	//background-color: #808080
+	border-radius: 4px
+	border: 1px solid darken($btn-orange-2,10%)
+	// Gradient Set Up
+	$fallback: rgb(189,189,189)
+	$start: rgba(189,189,189,1)
+	$end: rgba(160,160,160,1)
+	+gradient($btn-orange-2, $btn-orange-1, $fallback)
+
+	& + .button
+		margin-left: .5em
+
+.player a.button
+	color: #fff
+	text-shadow: 1px 1px 0 darken($btn-orange-2,10%)
+
+.stats .button
+	width: 100%
+	text-align: center

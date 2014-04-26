@@ -1,0 +1,3 @@
+$("#posts").prepend("<%=j render :partial=>"feed_post", :locals=>{:feed_entry=>@feed_entry, :@card => @card}%>").find(':first .content').effect('highlight', {}, 1000);
+$('#content').val('')
+

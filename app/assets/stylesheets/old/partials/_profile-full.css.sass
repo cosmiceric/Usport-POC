@@ -1,0 +1,111 @@
+.player
+	.full-info
+		color: rgba(99,99,99,1)
+		padding: 1em
+		margin: auto
+		max-width: 1280px
+
+	.stats, .progress, .achievements, .endorsements, .videos, .photos
+		background: $white-bg
+		border: 1px solid rgba(99,99,99,.2)
+		margin-bottom: 1em
+		padding: 1em 1.5em
+
+	.achievements, .endorsements
+		float: left
+		width: 49.3%
+
+	.videos
+		overflow: auto
+		clear: both
+
+	.video
+		float: left
+		margin-bottom: 2em
+		width: 49%
+		padding: 0
+		iframe
+			margin: 1em auto
+			height: 300px
+			width: 100%
+		h1
+			color: $orange
+			font-size: 1.2em
+
+	.video:last-child
+		margin-left: 2%
+
+	.photos
+		clear: both
+		overflow: auto
+		img
+			float: left
+			margin: 0 0 2% 2%
+			width: 21%
+		img:nth-child(2)
+			margin: 0
+			width: 54%
+
+	.stats
+		table
+			//background: lightblue
+			color: $orange
+			font-weight: 600
+			text-align: center
+			width: 100%
+		td, th
+			//background: skyblue
+			padding: 1.5% 0
+			//width: percentage(1/6)
+		tr
+			border-bottom: 1px solid rgb(220,220,220)
+		tr th
+			width: 15%
+		.data
+			font-size: 1.2em
+			width: 10%
+		tr td:last-child
+			text-align: right
+			width: 12%
+
+		thead
+			border-top: 1px solid rgba(99,99,99,.25)
+			//border-bottom: 1px solid rgba(99,99,99,.25)
+			color: rgb(99,99,99)
+			font-size: .65em
+		tr th:first-child
+			color: rgb(99,99,99)
+			font-family: $tungsten
+			font-size: 1.2em
+			font-weight: 600
+			text-align: left
+
+	.achievements
+		margin-right: 1.4%
+		li
+			clear: both
+			padding: .75em 1em
+			&:hover
+				background: lighten($orange,20%)
+			&:hover .type
+				color: rgb(255,255,255)
+		img
+			float: left
+			margin: 0 1em 0 0
+			padding: .4em 0 0 0
+		.date
+			display: block
+			font-family: $tungsten
+			font-size: 1.3em
+			margin-bottom: .25em
+		.type
+			color: $orange
+			display: block
+
+	.endorsements
+		img
+			max-width: 46.5%
+		.name
+			font-size: 1.333rem
+		.affiliation
+			font-size: 1rem

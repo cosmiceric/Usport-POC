@@ -1,0 +1,182 @@
+.collection
+	background: $off-black
+	border-bottom: 1px solid rgb(190,190,190)
+
+.collection-screen
+	height: 796px
+	width: 100%
+	background-image: url(/images/mockups/collection/card_collection.jpg)
+	background-position: center top
+	background-repeat: no-repeat
+	display: none
+
+
+.player-overview
+	max-width: $max-width
+	margin: 0 auto
+	text-align: center
+
+	.wrapper
+		padding: 0 1em
+
+
+	h1
+		color: $white
+		font-size: 1.333rem
+		font-weight: bold
+
+	h2
+		font-size: .8rem
+		text-transform: uppercase
+		color: gray
+
+	.name, .info li
+		float: left
+		vertical-align: middle
+
+	.name
+		float: left
+		padding: 1.2em 0 0 0
+		padding-top: 2.5em
+
+	.info
+		float: right
+		li
+			width: 8em
+
+	li
+		margin: 0 1em
+		padding: 1em 0
+
+	.data
+		color: $white
+		font-family: $tungsten
+		font-size: 2rem
+		font-weight: 600
+
+	.nextgame
+	.date-time
+		font-family: $gotham
+		font-weight: normal
+		color: #808080
+		font-size: .5em
+
+
+.card-stats-holder
+	//background: $white
+	//background: rgba(200,200,200,1)
+	background: #dedede
+
+.card-stats
+	//background: $off-black
+	@extend .module-area
+
+	.team-standings, .stat-snapshot
+		@extend .fourth-width-module
+	.highlighted
+		background-color: #808080
+		color: #FAFAFA
+	.highlights
+		@extend .half-width-module
+
+		li
+
+			list-style: none
+			padding: 0
+			margin: 0
+			position: relative
+			padding-left: 24px
+			margin-bottom: .5em
+
+			&:before
+				@extend %icon-font
+				position: absolute
+				top: .15em
+				left: 0
+				content: "\e003"
+				display: block
+				float: left
+				margin: 0
+				height: 24px
+				width: 24px
+				text-align: center
+		li.system-gen:before
+			content: "\e004"
+
+	.team-standings, .stat-snapshot, .highlights
+		@extend %small-caps-headline
+		//+gradient-bg($black, x, rgb(50,50,50), rgb(35,35,35))
+		background: transparent
+		//box-shadow: 0 3px 0 lighten($black,2%)
+		border: none
+		//border: 1px solid rgb(33,33,33)
+		color: $d-grey
+		font-size: .8rem
+		padding: .65em 1.25em
+		text-align: left
+		//text-shadow: 1px 0 0 $off-black
+		h1
+			color: $red//$off-black //$red //$m-grey
+			border-bottom: 1px solid $m-grey//$red
+			font-weight: normal
+			font-style: normal
+			margin: 0 0 .7em 0
+			text-shadow: none
+		table
+			height: 140px
+		td, th
+			padding: 0 1em
+			vertical-align: middle
+		th
+			font-size: .8rem
+		th.middle
+			font-size: .8rem
+			text-align: center
+
+	.team-standings thead, .stat-snapshot th
+		font-size: .65rem
+		font-weight: bold
+	.team-standings th:first-child, .team-standings td:first-child
+		text-align: left
+
+	.stat-snapshot
+		th
+			text-align: left
+		tr:nth-child(even)
+			background: rgba(150,150,150,.1)
+		.stat-group
+			float: left
+			width: 50%
+		.data
+
+	ul
+		padding: 0
+		margin: 0
+
+	li
+		font-size: .85rem
+		padding: 0
+		margin: 0
+		margin-bottom: 1em
+
+	table
+		//color: $l-grey
+		font-size: .75rem
+		text-align: center
+		width: 100%
+		.team
+			font-size: .5rem
+			//vertical-align: middle
+			width: 35%
+		img
+			height: auto
+			width: 40%
+$green: rgba(20,200,20,.8)
+.num1, .num2, .middle
+	text-align: right
+.arrow-up
+	+triangle($green, 6px, up)
+	margin: auto
+.arrow-down
+	+triangle($red, 6px, down)
+	margin: auto

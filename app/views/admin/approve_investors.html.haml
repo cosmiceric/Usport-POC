@@ -1,0 +1,18 @@
+%h1 Investors
+
+/ = link_to "All Users", :action => "approve_users"
+/ |
+/ = link_to "Users awaiting approval", :action => "approve_users", :approved => "false"
+
+%table{:width=>560, :cellpadding=>5}
+  %tr
+    %th Email
+    %th Approved?
+    %th Admin?
+  - @investors.each do |investor|
+    %tr
+      %td= investor.email
+      %td= investor.approved || 'false'
+      %td= investor.admin || 'false'
+      %td= link_to "Toggle Approval", "/admin/approve_investors?investor_id=#{investor.id}"
+      %td= link_to "Toggle Admin", "/admin/approve_investors?investor_admin_id=#{investor.id}", :confirm => "Toggle #{investor.email} as admin?"

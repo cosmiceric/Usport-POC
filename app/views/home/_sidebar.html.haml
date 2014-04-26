@@ -1,0 +1,51 @@
+/
+	If on MyHome, show spectators
+	If on Profile, show favs
+
+.sidebar
+	-if params[:action] == 'dashboard'
+		.spectators
+			%h2 Who's Watching
+			.spectator
+				%img(src="/images/coaches/coach-1.jpg")
+				%h1 Kevin O'Sullivan
+				%h2 UF
+			.spectator
+				%img(src="/images/coaches/coach-2.jpg")
+				%h1 Terry Rooney
+				%h2 UCF
+			.spectator
+				%img(src="/images/coaches/coach-3.jpg")
+				%h1 Paul Mainieri
+				%h2 LSU
+
+	-else
+		.favorites
+			%h2 Favorites
+			.favorite
+				%img(src="/images/favorites/rawlings.jpg")
+				%h1 Rawlings Glove
+				%h2 Liked
+			.favorite
+				%img(src="/images/favorites/louisville.jpg")
+				%h1 Louisville Slugger
+				%h2 Like?
+
+			.favorite
+				%img(src="/images/favorites/mizuno.jpg")
+				%h1 Mizuno Cleats
+				%h2 Liked
+
+
+	.ads
+		%h2 Sponsors
+		.ad
+			%img(src="/images/helmet.png")
+			%h1 All-Star Batting Helmet
+			%p
+				Moisture wicking UltraCool fabric keeps players dry and sweat out of eyes.
+		.ad
+			%img(src="/images/bat.png")
+			%h1 THE HARDEST BAT. EVER.
+			%p
+				We proudly introduce the MLB Prime series, the hardest wood bats ever produced by Louisville Slugger.

@@ -1,0 +1,11 @@
+.feedback
+	/ Feedback owner's profile pic
+	/ %img(class="posted-by"src="http://flickholdr.com/100/100")
+
+	=image_tag comment.card.image.url(:small), :class=>"posted-by"
+
+	/ Feedback owner's name
+	=link_to comment.card.name, '/player/' + comment.card.id.to_s
+	/ Feedback content
+	%p
+		=comment.comment

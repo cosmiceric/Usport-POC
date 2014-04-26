@@ -1,0 +1,43 @@
+// Fonts
+$tungsten: 'Tungsten A', 'Tungsten B', sans-serif
+$gotham: 'Gotham SSm A', 'Gotham SSm B', sans-serif
+
+html
+	font-size: 16px
+
+body
+	color: $d-grey
+	font-family: $gotham
+	line-height: 1.5
+
+// Headings
+h1,h2,h3,h4,h5,h6
+	margin-bottom: .45em
+
+h1
+	font-size: 5.61rem
+h2
+	font-size: 4.209rem
+h3
+	font-size: 3.157rem
+h4
+	font-size: 2.369rem
+h5
+	font-size: 1.777rem
+h6
+	font-size: 1.333rem
+
+a
+	color: $red
+	text-decoration: none
+	font-weight: 500
+	&:hover
+		color: darken($red,10%)
+
+::selection
+	background: $red
+	color: $white
+
+::-moz-selection
+	background: $red
+	color: $white

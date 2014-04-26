@@ -1,0 +1,604 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+html, body {
+  background-color: #050505;
+}
+html {
+  height: 100%;
+}
+body {
+  font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 16px;
+  margin: 0;
+}
+body[class*="active-step-"] .header {
+  margin-bottom: -5.25em;
+}
+* {
+  line-height: 1em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+h1,
+h2 {
+  font-weight: 200;
+  line-height: 1.3em;
+}
+h4 {
+  font-weight: 300;
+  line-height: 1.3em;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover:not(.btn) {
+  color: white;
+  text-decoration: none;
+  border-bottom: .1em solid white;
+  margin-bottom: -0.1em;
+}
+.section {
+  width: 100%;
+  float: left;
+}
+.section > .wrapper {
+  width: 1024px;
+  padding: 0 1em;
+  display: block;
+  margin: 0 auto;
+}
+.page-bg {
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -100;
+}
+#video-viewport {
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    height: 100%;
+    z-index: -1; /* for accessing the video by click */
+    background-image: url('/videos/baseball-frame2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .3;
+}
+html.touch #video-viewport {
+  opacity: .75;
+}
+html.touch #video-viewport video {
+  display: none;
+}
+/* .page-bg video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+  min-width: 100%;
+  opacity: .3;
+} */
+.page-bg video {
+  
+}
+#debug {
+    position: absolute;
+    top 0;
+    z-index: 100;
+    color: #fff;
+    font-size: 12pt;
+}
+.brand {
+  font-size: 3em;
+  font-family: 'Tungsten A', 'Tungsten B', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: white;
+  line-height: 3em;
+  z-index: 100;
+  position: relative;
+}
+a.brand {
+  font-weight: 900;
+  font-style: italic;
+  color: #A8A8A8;
+  
+}
+a.brand:hover {
+  color: #A8A8A8;
+  border: none;
+}
+a.brand span {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+/* Hero Styles */
+.hero {
+  background: none;
+  color: #fff;
+  text-align: center;
+  padding: 0;
+}
+.hero h1 {
+  font-size: 4em;
+  font-weight: bold;
+  letter-spacing: .01em;
+  font-family: 'Tungsten A', 'Tungsten B', sans-serif;
+  width: 80%;
+  margin: 0 auto;
+}
+.hero h2 {
+  margin: 0;
+  font-size: 36px;
+  margin-bottom: 1.5em;
+}
+.hero h4 {
+  margin: 0 auto;
+  font-size: 2em;
+  width: 80%;
+  margin-top: .75em;
+}
+.pitch {
+  position: relative;
+}
+.pitch .slides {
+  float: left;
+  width: 100%;
+  padding: 0;
+}
+.pitch .slides li {
+  display: none;
+}
+
+.flex-viewport {
+  z-index: 1;
+}
+.flex-direction-nav {
+  list-style-type: none;
+  margin: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 0;
+}
+.flex-direction-nav > li {
+
+}
+.flex-direction-nav > li > a {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 10%;
+  height: 80%;
+
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.flex-direction-nav a:hover {
+  border-color: transparent;
+}
+.flex-prev {
+  left: 0;
+}
+.flex-next {
+  right: 0;
+}
+.flex-direction-nav > li > a:after {
+  text-indent: 0;
+  display: block;
+  font-size: 6em;
+  line-height: 1em;
+  top: 40%;
+  position: absolute;
+  font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+}
+.flex-prev:after {
+  content: "\2329";
+}
+.flex-next:after {
+  content: "\232A";
+  right: 0;
+}
+.sub h1 {
+  font-size: 2em;
+  font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+  font-weight: 400;
+}
+.primary.section {
+  padding-bottom: 4em;
+}
+.primary > .wrapper {
+  text-align: center;
+}
+.btn {
+  background: #4998df;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  border-radius: 3px;
+  font-weight: 500 !important; 
+  line-height: 1.3em;
+  padding: .75em 1em;
+  font-size: 1.15em;
+}
+a.go-to-step.btn-go-to-app {
+  background-color: #c81818;
+}
+.intro {
+  padding-top: 4em;
+  float: left;
+  width: 100%;
+}
+.intro .step {
+  text-align: center;
+}
+.inner h2 {
+  font-size: 1.8em;
+  margin-top: 0em;
+}
+.loadIn.fadeIn {
+  opacity: 1;
+}
+.intro .face-back .content {
+  background: url("../img/cards/card4-f.png") center top no-repeat;
+}
+.for-part-intro-email a[href="#part-intro"] {
+  margin: 0 0 1em;
+  margin-top: 0 !important;
+}
+.for-part-intro-email a[href="#part-intro"]:hover {
+  margin-bottom: .95em;
+}
+#part-intro-email {
+  width: 15em;
+}
+input {
+  font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+  padding: 1em 1em .75em;
+}
+
+#part-intro-email input {
+  padding: 1em;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 3px;
+  width: 100%;
+  margin: .5em 0;
+  font-size: 1em;
+}
+.steps {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: .5em;
+  color: #222;
+  max-width: 1050px;
+  margin: 2em auto;
+  float: none;
+  display: inline-block;
+  width: 100%;
+}
+.steps img {
+  width: 100%;
+}
+.steps > .inner {
+  padding: 2em 2em 1em;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  float: left;
+  width: 100%;
+}
+.steps a {
+  color: #222;
+}
+.steps a:hover {
+  color: #222;
+  border-bottom: .1em solid #222;
+}
+.steps .player-card {
+  border-color: gray;
+  float: left;
+}
+.steps-nav {
+  text-align: center;
+  margin-bottom: 2em;
+  position: relative;
+}
+.steps-nav .progress-bar {
+  content: "";
+  position: absolute;
+  background-color: lightgray;
+  width: 100%;
+  height: .25em;
+  top: 3em;
+}
+.steps-nav .progress-bar .fill {
+  width: 66%;
+  float: left;
+  background-color: #4998df;
+  position: absolute;
+  height: 100%;
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ5OThkZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc3JSIgc3RvcC1jb2xvcj0iIzc1YjRlNyIgc3RvcC1vcGFjaXR5PSIwLjkiLz4KICAgIDxzdG9wIG9mZnNldD0iOTIlIiBzdG9wLWNvbG9yPSIjN2RiOWU4IiBzdG9wLW9wYWNpdHk9IjAuMzEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzdkYjllOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(left, #4998df 0%, rgba(117, 180, 231, 0.9) 77%, rgba(125, 185, 232, 0.31) 92%, rgba(125, 185, 232, 0) 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #4998df), color-stop(77%, rgba(117, 180, 231, 0.9)), color-stop(92%, rgba(125, 185, 232, 0.31)), color-stop(100%, rgba(125, 185, 232, 0)));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(left, #4998df 0%, rgba(117, 180, 231, 0.9) 77%, rgba(125, 185, 232, 0.31) 92%, rgba(125, 185, 232, 0) 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(left, #4998df 0%, rgba(117, 180, 231, 0.9) 77%, rgba(125, 185, 232, 0.31) 92%, rgba(125, 185, 232, 0) 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(left, #4998df 0%, rgba(117, 180, 231, 0.9) 77%, rgba(125, 185, 232, 0.31) 92%, rgba(125, 185, 232, 0) 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to right, #4998df 0%, rgba(117, 180, 231, 0.9) 77%, rgba(125, 185, 232, 0.31) 92%, rgba(125, 185, 232, 0) 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4998df', endColorstr='#007db9e8', GradientType=1);
+  /* IE6-8 */
+
+}
+body.active-step-create-account .progress-bar .fill {
+  width: 33%;
+}
+body.active-step-add-stats .progress-bar .fill {
+  width: 66%;
+}
+body.active-step-share-card .progress-bar .fill {
+  width: 100%;
+  background: #4998df;
+}
+.steps-nav a {
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  padding: 0 1em;
+  color: #c8c8c8;
+  width: 30%;
+  font-size: 1.15em;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  z-index: 100;
+  position: relative;
+}
+.steps-nav a:hover {
+  color: #9c9c9c;
+  border-bottom-color: transparent;
+}
+.steps-nav a.active {
+  color: #4998df;
+}
+.steps-nav a:before {
+  display: block;
+  content: "";
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 2em;
+  width: 100%;
+  margin-bottom: 1.5em;
+  opacity: .7;
+}
+.steps-nav [href="#step-create-account"]:before {
+  background-image: url('../img/icons/info-icon.png');
+}
+.steps-nav [href="#step-create-account"].active:before {
+  background-image: url('../img/icons/info-icon-hover.png');
+  opacity: 1;
+}
+.steps-nav [href="#step-create-account"]:hover:before {
+  opacity: 1;
+}
+.steps-nav [href="#step-add-stats"]:before {
+  background-image: url('../img/icons/stats-icon.png');
+}
+.steps-nav [href="#step-add-stats"].active:before {
+  background-image: url('../img/icons/stats-icon-hover.png');
+  opacity: 1;
+}
+.steps-nav [href="#step-add-stats"]:hover:before {
+  opacity: 1;
+}
+.steps-nav [href="#step-share-card"]:before {
+  background-image: url('../img/icons/share-icon.png');
+}
+.steps-nav [href="#step-share-card"].active:before {
+  background-image: url('../img/icons/share-icon-hover.png');
+  opacity: 1;
+}
+.steps-nav [href="#step-share-card"]:hover:before {
+  opacity: 1;
+}
+.step {
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.steps .step {
+  padding: 2em 1em 2em 4em;
+  float: left;
+  width: 35em;
+}
+/* Player Card Styles */
+.player-card {
+  width: 21em;
+  height: 28.75em;
+  display: inline-block;
+  position: relative;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+}
+.player-card.card-baseball .face-front .content {
+  background-image: url("../img/cards/card-face.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.player-card .face {
+  height: 100%;
+  width: 100%;
+  border: .75em solid white;
+  background-color: white;
+  border-radius: 10px;
+  float: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  -webkit-box-shadow: 0px 1px 5px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 0px 1px 5px rgba(50, 50, 50, 0.3);
+  box-shadow: 0px 1px 5px rgba(50, 50, 50, 0.3);
+}
+.player-card .face .content {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+}
+.player-card .face-front {
+  z-index: 900;
+  -webkit-transform: rotateX(0deg) rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-transform: rotateX(0deg) rotateY(0deg);
+  -moz-transform-style: preserve-3d;
+  -moz-backface-visibility: hidden;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.player-card .face-back {
+  z-index: 800;
+  -webkit-transform: rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-transform: rotateY(180deg);
+  -moz-transform-style: preserve-3d;
+  -moz-backface-visibility: hidden;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.player-card:hover.hover .face-front,
+.player-card[data-face="back"] .face-front {
+  z-index: 900;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+}
+.player-card:hover.hover .face-back,
+.player-card[data-face="back"] .face-back {
+  z-index: 1000;
+  -webkit-transform: rotateX(0deg) rotateY(0deg);
+  -moz-transform: rotateX(0deg) rotateY(0deg);
+}
+.steps .player-card {
+  margin-left: 1em;
+}
+.player-info {
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+}
+.player-info h4 {
+  position: relative;
+  margin: 0;
+}
+.player-info h5 {
+  position: relative;
+  margin: 0;
+  margin-top: .5em;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 18px;
+}
+.intro .step > .content {
+  display: inline-block;
+  /* height: 30em; */
+  vertical-align: top;
+  margin-left: 1em;
+  text-align: left;
+  padding: 2em;
+  width: 20em;
+}
+.steps .step .content {
+  width: 100%;
+  height: 26em;
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+}
+.step .content:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+.step .content .inner {
+}
+.step .content a {
+  display: inline-block;
+  margin-top: 1em;
+  font-weight: 400;
+}
+#step-create-account .form {
+  margin-bottom: 5.75em;
+}
+#part-stats-3b .form,
+#part-stats-3f .form {
+  margin-bottom: 6.75em;
+}
+.form {
+  margin-bottom: 2em;
+}
+a.go-to-step {
+  display: inline-block;
+  background-color: #4998df;
+  padding: .75em 1em;
+  font-weight: bold !important;
+  border: .05em solid lightgray;
+  border-radius: .25em;
+  font-size: 1.25em;
+  color: white !important;
+}
+a.go-to-step:hover {
+  text-decoration: none;
+  border-bottom: .05em solid lightgray;
+  margin-bottom: 0;
+}
+a.go-to-step.go-next {
+  float: right;
+}
+a.go-to-step.go-previous {
+  float: left;
+}
+.footer {
+  margin-top: 2em;
+  padding: 1em 0;
+}

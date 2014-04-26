@@ -1,0 +1,71 @@
+.module-area
+	//background: red // FOR DEBUGGING THE GRID - cue tron music
+	margin: auto
+	max-width: $max-width
+	overflow: hidden
+	h1
+		color: $red
+		font-size: 1.777rem
+		font-weight: bold
+
+// Grid Basics
+// 1024 total width (ipad landscape)
+// Define gutter here
+$gutter: 20px
+
+%module
+	background: $white
+	border: 1px solid darken($l-grey, 7%)
+	border-radius: 3px
+	float: left
+	padding: 2em
+	margin: $gutter
+
+%dark-module
+	background: $off-black
+	border: 1px solid $black
+	color: $l-grey
+
+%small-caps-headline
+	h1
+		font-family: $tungsten
+		font-size: 2rem
+		font-style: italic
+		letter-spacing: 1px
+		text-transform: uppercase
+
+.dark
+	@extend %dark-module
+	@extend %small-caps-headline
+
+// Full Width
+.full-width-module
+	@extend %module
+	clear: both
+	width: ($max-width - ($gutter*2))
+	max-width: ($max-width - ($gutter*2))
+
+// 1/2 Width
+.half-width-module
+	@extend %module
+	width: (($max-width -($gutter*4)) / 2 )
+	max-width: (($max-width -($gutter*4)) / 2 )
+
+// 1/3 Width
+.third-width-module
+	@extend %module
+	width: (($max-width -($gutter*6)) / 3 )
+	max-width: (($max-width -($gutter*6)) / 3 )
+
+
+// 1/3 Width
+.fourth-width-module
+	@extend %module
+	width: (($max-width -($gutter*8)) / 4 )
+	max-width: (($max-width -($gutter*8)) / 4 )
+
+// 2/3 Width
+.two-third-width-module
+	@extend %module
+	width: (($max-width -($gutter*6)) / 3 )*2+$gutter*2
+	max-width: (($max-width -($gutter*6)) / 3 )*2+$gutter*2

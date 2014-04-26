@@ -1,0 +1,237 @@
+.player
+	.full-info
+		@extend .module-area
+		color: rgba(99,99,99,1)
+
+	.stats, .progress, .videos, .photos, .analysis-data
+		@extend .full-width-module
+		//background: $white
+		//border: 1px solid rgba(99,99,99,.2)
+		//margin-bottom: 1em
+		//padding: 1em 1.5em
+
+	.achievements, .endorsements, .stat-snapshot
+		@extend .third-width-module
+		@extend %small-caps-headline
+		//+gradient-bg($black, x, rgb(50,50,50), rgb(35,35,35))
+		background: transparent
+		//box-shadow: 0 3px 0 lighten($black,2%)
+		border: none
+		//border: 1px solid rgb(33,33,33)
+		color: $d-grey
+		font-size: .8rem
+		padding: .65em 1.25em
+		text-align: left
+		//text-shadow: 1px 0 0 $off-black
+		h2
+			border-bottom: 1px solid $m-grey//$red
+			font-weight: normal
+			font-style: normal
+			margin: 0 0 .7em 0
+			text-shadow: none
+			font-size: 2rem
+			letter-spacing: 1px
+			text-transform: uppercase
+
+	.videos
+		overflow: auto
+		clear: both
+
+	.video
+		float: left
+		margin-bottom: 2em
+		width: 49%
+		padding: 0
+		iframe
+			margin: 0 auto 1em
+			height: 300px
+			width: 100%
+		h1
+			color: $sj-green
+			font-size: 1.2em
+
+	.video:last-child
+		margin-left: 2%
+
+	.photos
+		clear: both
+		overflow: auto
+		img
+			float: left
+			margin: 0 0 2% 2%
+			width: 21%
+		img:nth-child(2)
+			margin: 0
+			width: 54%
+
+	.stats
+		table
+			//background: lightblue
+			color: $m-grey
+			font-weight: 600
+			text-align: center
+			width: 100%
+		td, th
+			//background: skyblue
+			padding: 1.5% 0
+			//width: percentage(1/6)
+		tr
+			border-bottom: 1px solid rgb(220,220,220)
+		tr th
+			width: 15%
+		.data
+			font-size: 1.2em
+			width: 10%
+		tr td:last-child
+			text-align: right
+			width: 12%
+
+		thead
+			border-top: 1px solid rgba(99,99,99,.25)
+			//border-bottom: 1px solid rgba(99,99,99,.25)
+			color: rgb(99,99,99)
+			font-size: .65em
+		tr th:first-child
+			color: $d-grey
+			//font-family: $tungsten
+			font-size: .75em
+			font-weight: 600
+			text-align: left
+			text-transform: uppercase
+
+	.achievements
+		li
+			font-size: .8rem
+			clear: both
+			margin-bottom: .75em
+		img
+			float: left
+			margin: 0 1.25em 0 0
+			padding: .3em 0 0 0
+			width: 2.5em
+		.date
+			color: $sj-green
+			display: block
+			font-family: $tungsten
+			font-size: 1.5em
+			font-weight: bold
+			//margin-bottom: .25em
+		.type
+			color: $sj-green
+			display: block
+
+	.endorsements
+		img
+			max-width: 46.5%
+		.endorsement
+			margin: 1em 0
+		
+	.endorsement
+
+		.byline
+			display: inline-block
+			vertical-align: top
+			margin-left: .5em
+			margin-bottom: 0
+			text-align: left
+		.name
+			font-size: 1rem
+			font-weight: 500
+		.affiliation
+			font-size: .7rem
+	.full-width-module .endorsement
+		float: left
+		padding: 0 2em
+		width: 50%
+		p
+			margin-bottom: 2em
+		&:nth-child(2)
+			padding-left: 0
+		&:nth-child(3)
+			padding-right: 0
+		.author
+			text-align: right
+
+	.stat-snapshot
+		table
+			font-size: .8rem
+			text-align: center
+			width: 100%
+		td, th
+			padding: 0 1em
+		tr:nth-child(even), thead tr
+			background: rgba(40,100,40,.1)
+			//color: $white
+		th
+			//color: $m-grey
+			font-weight: 600
+		thead
+			th
+				text-align: right
+		tbody
+			th
+				text-align: left
+			td
+				text-align: right
+			
+
+.espn
+	font-size: .65em
+	text-align: center
+	width: 100%
+	tr:last-child
+		background: rgb(37,37,37)
+		color: $white
+		font-size: 1.1em
+		font-weight: 600
+
+.colhead
+	font-weight: bold
+
+.oddrow td, .evenrow td
+	padding: 1em 0
+
+.evenrow td
+	background: rgba(150,150,150,.1)
+
+.analysis-data
+	position: relative
+	.notinview
+		canvas
+			display: none
+.legend
+	background: $white
+	border: 1px solid $l-grey
+	padding: 12px 18px
+	position: absolute
+	.legend-group
+		overflow: auto
+		margin: .5em 0
+	.color, .label
+		float: left
+	.color
+		border-radius: 100%
+		height: 24px
+		width: 24px
+		margin-right: 12px
+.legend-1
+	bottom: 120px
+	right: 150px
+	.color-1
+		border: 5px solid $sj-green
+	.color-2
+		border: 5px solid $off-black
+	.color-3
+		border: 5px solid $sj-gold
+.legend-2
+	border: none
+	top: 145px
+	right: 68px
+	.color
+		border-radius: 0
+	.color-1
+		background: transparentize($sj-green,.2)
+		border: 2px solid $sj-green
+	.color-2
+		background: transparentize($sj-gold,.2)
+		border: 2px solid $sj-gold

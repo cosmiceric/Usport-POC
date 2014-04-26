@@ -1,0 +1,37 @@
+%h1 Listing cards
+
+%table
+  %tr
+    %th Card ID
+    %th Image
+    %th First name
+    %th Last name
+    %th Team
+    %th
+    %th
+    %th
+
+  - @cards.each do |card|
+    %tr
+      %td= card.id
+      %td= image_tag card.image.url(:small)
+      %td= card.first_name
+      %td= card.last_name
+      %td= card.team.name
+      %td= link_to 'Show', card
+      %td= link_to 'Edit', edit_card_path(card)
+      %td= link_to 'Destroy', card, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+=form_tag '', :method => :get do 
+  Duplicate card
+  %p 
+    Duplicate of Card Id:
+    =text_field_tag "card_id"
+  %p
+    Enter new full name:
+    =text_field_tag "new_name"
+  %p
+    =submit_tag "Create Duplicate Card"
+
+= link_to 'New Card', new_card_path

@@ -1,0 +1,33 @@
+%h1 Listing teams
+
+%table
+  %tr
+    %th
+    %th Name
+    %th Sport
+    %th Next Match
+    %th Next Match Date
+    %th Wins
+    %th Losses
+    %th Primary Color
+    %th Secondary Color
+    %th
+    %th
+
+  - @teams.each do |team|
+    %tr
+      %td= image_tag team.logo.url(:small)
+      %td= team.name
+      %td= team.sport.name
+      %td= team.next_match_team_name
+      %td= team.next_game_at.strftime('%m/%d/%y') unless team.next_game_at.blank?
+      %td= team.wins
+      %td= team.losses
+      %td= team.primary_color
+      %td= team.secondary_color
+      %td= link_to 'Edit', edit_admin_team_path(team)
+      %td= link_to 'Destroy', admin_team_path(team), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Team', new_admin_team_path

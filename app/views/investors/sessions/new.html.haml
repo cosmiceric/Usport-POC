@@ -1,0 +1,21 @@
+%h2 Sign in
+.error=flash[:alert]
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  %div
+    = f.email_field :email, :placeholder => 'Email' , :autofocus => true
+  %div
+    = f.password_field :password, :placeholder => 'Password'
+  - if devise_mapping.rememberable?
+    %div
+      = f.check_box :remember_me
+      Keep Me Logged In
+    %br/
+  %div= f.submit "Sign in", :class=> 'btn btn-primary'
+  %div{:style=>'border:1px solid black; border-radius:5px; width:350px; margin: 20px 0 20px; padding:10px 10px 20px 10px; text-align:center'}
+    If you haven't signed in to Sports RnD before, please
+    %br
+    %br
+    = link_to "Request Access", new_investor_registration_path, :class=> 'btn btn-success'
+
+
+= link_to "Forgot Password?", new_investor_password_path

@@ -1,0 +1,181 @@
+@import ../partials/card
+
+.card-collection
+	position: absolute
+	top: 0
+	width: 100%
+	header
+		background: rgba(41,43,55,.35)
+		border-bottom: 1px solid rgba(0,0,0,.45)
+		box-shadow: 0 1px 0 rgba(255,255,255,.3)
+		font-size: 1.5em
+		padding: 1.25em .5em
+
+		nav
+			margin: auto
+			max-width: $max-width
+			text-align: center
+
+		a
+			color: $white
+			text-decoration: none
+
+		.filter
+			a
+				border: 2px solid transparent
+				margin: 0 .5em
+				padding: .55em 1.4em .45em 1.4em
+
+			a:hover, .current
+				border: 2px solid $grey
+				border-radius: 2em
+
+		li
+			display: inline-block
+
+		select
+			+custom-select
+
+		input
+			background: url(/images/search.png) no-repeat rgba(0, 0, 0, 0)
+			background-position: 92% center
+			background-size: 10%
+			border: 2px solid $white
+			border-radius: 2em
+			color: $white
+			padding: .75em 1em .6em 1.35em
+			margin: 0
+			font-size: .8em
+			font-family: $gotham
+			&:focus
+				border: 2px solid $grey
+				outline: none
+
+		+search-placeholder-color($white)
+
+	.title, .filter, .sort, .search, .close
+		//background: pink
+		display: inline-block
+		padding: 0 20px
+		vertical-align: middle
+
+	.title
+		font-family: $tungsten
+		font-size: 2.5em
+		font-weight: 600
+		letter-spacing: 1px
+
+	.close
+		font-size: 1.5em
+		padding: 0
+
+.cards
+	clear: both
+	overflow-x: hidden
+	overflow-y: auto
+	//position: relative
+	-webkit-perspective: 1800
+
+
+	.header
+		float: left
+		width: 100%
+		padding: 1em
+		.column
+			padding: 1em
+			float: left
+			text-align: left
+		.column-1
+			width: 15%
+			text-align: center
+		.column-2
+			width: 60%
+		.column-3
+			width: 25%
+		.player-name
+			border-top: 1px solid #646565
+			padding: .25em 0
+			font-family: $gotham
+			font-size: 3.7em
+			color: white
+			font-weight: 500
+		.actions
+			margin-top: 1.5em
+		.next-game
+			padding: .75em 0
+			border: 1px solid #646565
+			border-width: 1px 0
+
+		h3
+			font-family: $tungsten
+			color: #838383
+			font-weight: bold
+			font-size: 3em
+		.stats
+			margin-top: .5em
+			font-size: 1.75em
+			table
+
+			td
+				padding: .45em
+				border: 1px solid #646565
+				border-width: 1px
+
+		.button.collect
+			color: white
+			border-color: darkorange
+			background: rgb(245,139,48) /* Old browsers */
+			background: -moz-linear-gradient(top, rgba(245,139,48,1) 0%, rgba(216,112,23,1) 100%) /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(245,139,48,1)), color-stop(100%,rgba(216,112,23,1))) /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, rgba(245,139,48,1) 0%,rgba(216,112,23,1) 100%) /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, rgba(245,139,48,1) 0%,rgba(216,112,23,1) 100%) /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, rgba(245,139,48,1) 0%,rgba(216,112,23,1) 100%) /* IE10+ */
+			background: linear-gradient(to bottom, rgba(245,139,48,1) 0%,rgba(216,112,23,1) 100%) /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f58b30', endColorstr='#d87017',GradientType=0 ) /* IE6-9 */
+	.profile
+		background-color: #fafafa
+		float: left
+		width: 100%
+		text-align: left
+		color: $dark-grey
+		.section
+			float: left
+			width: 100%
+			padding: 2em
+			border-top: 1px solid lightgray
+		.section-title
+			color: #676868
+			font-family: $tungsten
+			font-size: 4.2em
+			font-weight: 600
+			margin-bottom: .5em
+		.section.stats-recent
+
+			table
+				font-size: 1.75em
+				width: 100%
+			td, th
+				padding: .45em
+				border: 1px solid #bfbfbf
+				border-width: 1px 0
+				vertical-align: middle
+			.career
+				td
+					color: #9d9d9d
+			tbody
+				th
+					font-family: $tungsten
+					color: #7f8080
+					font-size: 1.75em
+					font-weight: 600
+				td
+					color: $giants
+					font-size: 1.7em
+					font-weight: 600
+		.section.photos
+			.images
+				margin: 0 -.5%
+			img
+				width: 19%
+				float: left
+				margin: 0 .5%

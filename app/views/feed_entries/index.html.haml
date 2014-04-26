@@ -1,0 +1,29 @@
+%h1 Listing feed_entries
+
+%table
+  %tr
+    %th Content
+    %th Type
+    / %th Image
+    %th
+    %th
+    %th
+
+  - @feed_entries.each do |feed_entry|
+    %tr
+      %td= feed_entry.content.html_safe
+      %td= feed_entry.entry_type
+      / %td
+      / = image_tag feed_entry.image.url(:small)
+      / = image_tag feed_entry.image2.url(:small)
+      / %td= link_to 'Show', feed_entry
+
+      %td= link_to 'Edit', edit_feed_entry_path(feed_entry)
+
+      %td= link_to 'Comments', feed_entry_comments_path(feed_entry)
+
+      %td= button_to 'Destroy', feed_entry, method: :delete, :confirm => 'Are you sure?'
+
+%br
+
+= link_to 'New Feed entry', new_feed_entry_path

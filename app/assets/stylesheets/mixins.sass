@@ -1,0 +1,97 @@
+=search-placeholder-color($color)
+	::-webkit-input-placeholder
+		color: $color
+	:-moz-placeholder
+		color: $color
+	::-moz-placeholder
+		color: $color
+	:-ms-input-placeholder
+		color: $color
+
+=custom-select
+	background: transparent
+	border: none
+	-webkit-appearance: none
+	-webkit-border-radius: 0
+	-moz-border-radius: 0
+	border-radius: 0
+	margin: 0
+	padding: 0
+
+	color: $white
+	font-size: 1em
+	font-weight: bold
+
+%visually-hidden
+	border: 0
+	clip: rect(0 0 0 0)
+	height: 1px
+	margin: -1px
+	overflow: hidden
+	padding: 0
+	position: absolute
+	width: 1px
+
+%visually-hidden-and-focusable
+	&:active, &:focus
+		clip: auto
+		height: auto
+		margin: 0
+		overflow: visible
+		position: static
+		width: auto
+
+=gradient-bg($fallback-color, $fallback-image-path, $top, $bottom)
+	/* fallback/image non-cover color */
+	background-color: $fallback-color
+
+	/* fallback image */
+	@if not($fallback-image-path == x)
+		background-image: url($fallback-image-path)
+
+	/* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($top), to($bottom))
+
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -webkit-linear-gradient(top, $top, $bottom)
+
+	/* Firefox 3.6+ */
+	background-image: -moz-linear-gradient(top, $top, $bottom)
+
+	/* IE 10+ */
+	background-image: -ms-linear-gradient(top, $top, $bottom)
+
+	/* Opera 11.10+ */
+	background-image: -o-linear-gradient(top, $top, $bottom)
+
+=triangle($color, $size, $direction)
+	display: block
+	width: 0
+	height: 0
+	@if $direction == up
+		border-bottom: $size solid $color
+
+		border-left: $size solid transparent
+		border-right: $size solid transparent
+
+	@if $direction == right
+		border-left: $size solid $color
+
+		border-bottom: $size solid transparent
+		border-top: $size solid transparent
+
+	@if $direction == down
+		border-top: $size solid $color
+
+		border-left: $size solid transparent
+		border-right: $size solid transparent
+
+	@if $direction == left
+		border-right: $size solid $color
+
+		border-bottom: $size solid transparent
+		border-top: $size solid transparent
+
+=circle($diameter)
+	padding: ($size/2)
+	border-radius: 50%

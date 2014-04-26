@@ -1,0 +1,141 @@
+%icon
+	display: inline
+	font-family: "icomoon"
+	float: left
+	margin-right: .55em
+
+%dob
+	@extend %icon
+	content: "\e00a"
+%test
+	@extend %icon
+	content: "\e007"
+%physical
+	@extend %icon
+	content: "\e007"
+%experience
+	@extend %icon
+	content: "\e003"
+%team
+	@extend %icon
+	content: "\e008"
+
+.player
+	header
+		background: url(/images/player-bg.jpg) no-repeat
+		background-position: 10% 30%
+		padding: 2em 0 0 0
+		text-align: center
+		vertical-align: top
+
+	a
+		color: rgba(149,149,149,1)
+		font-weight: 500
+		text-decoration: none
+
+	.card-preview, .brief-info, .upcoming
+		display: inline-block
+		margin: 0 1em
+		text-align: left
+		padding: 1.5em 1em 1em 1em
+		vertical-align: top
+
+	.card-preview
+		background: url(/images/tim_lincecum.jpg) top center no-repeat
+		border-top: 6px solid $white
+		border-right: 6px solid $white
+		border-left: 6px solid $white
+		border-top-left-radius: 10px
+		border-top-right-radius: 10px
+		height: 280px
+		width: 300px
+		position: relative
+		.button
+			font-size: 1.25em
+			position: absolute
+			bottom: 1em
+			left: 50%
+			margin-left: -2.2em
+
+
+	.brief-info
+		.number, .dob, .experience, .team, .physical, .throw-bat
+			display: block
+			font-size: .75em
+			padding: .55em 0
+		.team, .number
+			display: inline-block
+			font-size: 1.15em
+			font-weight: 600
+			margin-bottom: .7em
+			padding: 0
+		.experience:before
+			@extend %experience
+		.team
+			//background: $orange
+			color: $orange//rgb(25,25,25)
+			border-radius: 10px
+			//padding: .25em
+		.physical:before
+			@extend %physical
+		.dob:before
+			@extend %dob
+
+		.button
+			margin-top: 1em
+
+
+	h1
+		font-size: 1.65em
+		font-weight: 600
+		margin-bottom: .35em
+
+	h2
+		color: #676868
+		font-family: $tungsten
+		font-size: 2em
+		font-weight: 600
+		margin-bottom: .5em
+
+	.upcoming
+		background: rgba(255,255,255,.95)
+		border-radius: 4px
+		color: rgba(99,99,99,1)
+		width: 18em
+		h1
+			font-size: 1em
+			margin-bottom: 1.2em
+			//font-family: $tungsten
+		.logo
+			float: left
+			margin-right: 1em
+			max-width: 60px
+		.state
+			display: block
+			color: $cardinals
+			font-size: .8em
+			font-weight: 600
+			margin: 0 0 .25em 0
+		.team
+			display: block
+			font-family: $tungsten
+			font-size: 2.3em
+			font-weight: 600
+
+	.filter-menu
+		background: $white-bg
+		border-bottom: 1px solid rgba(99,99,99,.2)
+		padding: 1em 2em
+		a
+			padding: .5em 2em
+		.active
+			color: $orange
+			&:after
+				content: ""
+				display: inline-block
+				border-bottom: 10px solid $main-bg
+				border-right: 10px solid transparent
+				border-left: 10px solid transparent
+				position: relative
+				top: 25px
+				left: -35px

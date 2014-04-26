@@ -1,0 +1,34 @@
+%header
+  %nav.main-menu
+    .title
+      
+      = link_to(raw(("U<span>Sport</span>")), root_url)
+
+    .links
+
+      -ulinks = ["My Home", "Players", "Teams", "Research", "Events"]
+      %ul
+        -ulinks.each do |ulink|
+          %li=link_to_unless_current ulink, "/#{ulink.downcase.gsub(' ','_')}"
+
+      / %ul
+      /   %li
+      /     %a(href="#" class="current") Players
+      /   %li
+      /     %a(href="#") Teams
+      /   %li
+      /     %a(href="#") Research
+      /   %li
+      /     %a(href="#") Events
+    .search
+      %input(type='text' placeholder='Search')
+    %a(class="open-collection" href="#") Collection
+    .quick-links
+      %ul
+        %li
+          %a(href="#" class="you" title="Sign Out" onclick="window.location='/users/sign_out'") &#xe003 <span class="notifications-count">8</span>
+
+        %li
+          %a(href="#" class="gear") &#xe004
+
+
